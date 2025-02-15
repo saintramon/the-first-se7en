@@ -1,0 +1,60 @@
+name: CI/CD Pipeline
+
+on: 
+  push:
+    branches:
+      -main
+  pull_request:
+    branches:
+      -main
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # MYSQL not yet configured, comment for now
+    # services:
+    #   mysql:
+    #     image: mysql:8.0
+    #     env:
+    #       MYSQL_ROOT_PASSWORD: root
+    #       MYSQL_DATABASE: se7en
+    #       MYSQL_USER: user
+    #       MYSQL_PASSWORD: 1234
+    #     ports:
+    #       - 3306:3306
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+        #not sure of the node version, lagay ko nalang 18
+          node-version: 18
+  
+      - name: Install dependencies for client (frontend)
+        working-directory: client
+        run: npm install
+
+      - name: Build React
+        working-directory: client
+        run: npm run build
+
+      - name: Install Dependencies for server (backend)
+        working-directory: server
+        run: npm install
+
+      - name: Test Backend
+        working-directory: server
+          # env: 
+          #   DATABASE_URL: mysql://user:password@localhost:3306/se7en
+        run: npm test
+
+        
+
+
+      
+        
+        
+      
