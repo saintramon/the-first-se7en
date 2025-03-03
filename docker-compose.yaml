@@ -1,0 +1,33 @@
+services:
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    volumes:
+      - ./client:/app/client
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    volumes:
+      - ./server:/app/server
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+    
+  database:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: the-first-se7en
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./the-first-se7en.sql:/docker-entrypoint-initdb.d/the-first-se7en.sql
+    ports:
+      - "3306:3306"
