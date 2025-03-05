@@ -1,54 +1,25 @@
-import { useState, useEffect } from 'react'
+import React from 'react';
+import {useState, useEffect} from 'react';
 import axios from "axios";
-
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-
 import './App.css'
 
-import Babaero from './Babaero'
+const apiCall = () => {
+  axios.get('http://localhost:8080').then((data) => {
+    //this console.log will be in our frontend console
+    console.log(data)
+  })
+}
 
-const App = () => {
-  const [count, setCount] = useState(0);
-  const [groupName, setGroupName] = useState("");
-
-  const fetch = async () =>{
-    const response = await axios.get("http://localhost:8080/HelloWorld")
-    setGroupName(response.data.groupName)
-  }
-
-  useEffect(() => {
-    fetch();
-  }, [])
-
+function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
+    <div className="App">
+      <header className="App-header">
 
-      <h1>WE ARE THE {groupName}</h1>
-      <Babaero/>
+        <button onClick={apiCall}>Make API Call</button>
 
-
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      </header>
+    </div>
+  );
 }
 
 export default App
