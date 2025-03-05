@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const conn = require("./Connection");
+
 const corsOptions = {
     origin: ['https://localhost:5173']
 };
-
 app.use(cors(corsOptions));
 
 app.get("/HelloWorld", (req, res) => {
