@@ -3,7 +3,6 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2025 at 09:36 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -154,6 +153,7 @@ ALTER TABLE `player`
 --
 ALTER TABLE `quest`
   MODIFY `quest_id` int(5) NOT NULL AUTO_INCREMENT COMMENT 'The primary key, in the form of an integer', AUTO_INCREMENT=21;
+
 
 --
 -- Constraints for dumped tables
