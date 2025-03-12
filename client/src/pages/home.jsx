@@ -1,12 +1,9 @@
 import React from 'react'
-import XPBar from '../components/xp_bar';
 
-function home() {
+function Home() {
   return (
-    <XPBar>
-        <p>Hello</p>
-    </XPBar>
+    <div>Home</div>
   )
 }
 
-export default home
+export default Home
