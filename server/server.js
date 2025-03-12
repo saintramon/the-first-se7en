@@ -4,10 +4,12 @@ const cors = require("cors");
 const conn = require("./Connection");
 const session = require('express-session');
 
-const corsOptions = {
-    origin: ['https://localhost:5173']
-};
-app.use(cors(corsOptions));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(cors({
+    origin: 'https://localhost:5173', // send data to frontend
+    credentials: true
+}));
+app.use(express.json()); // to process HTTPS requests
 
 app.get("/HelloWorld", (req, res) => {
     res.json({
