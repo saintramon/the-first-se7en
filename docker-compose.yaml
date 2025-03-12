@@ -4,7 +4,8 @@ services:
       context: ./client
       dockerfile: Dockerfile.client
     volumes:
-      - ./client:/app/client
+      - ./client:/app
+      - /app/node_modules  # Prevent node_modules sync issues
     ports:
       - "3000:3000"
     depends_on:
@@ -31,3 +32,6 @@ services:
       - ./the-first-se7en.sql:/docker-entrypoint-initdb.d/the-first-se7en.sql
     ports:
       - "3306:3306"
+
+volumes:
+  mysql-data:
