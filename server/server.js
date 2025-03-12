@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const conn = require("./Connection");
+const session = require('express-session');
 
 const corsOptions = {
     origin: ['https://localhost:5173']
