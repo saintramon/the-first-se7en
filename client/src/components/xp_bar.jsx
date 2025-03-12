@@ -5,7 +5,6 @@ function xp_bar() {
   return (
     <Container class='black'>
       <p>Hello</p>
-
     </Container>
   )
 }
