@@ -7,12 +7,16 @@ const session = require('express-session');
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors({
-    origin: 'http://localhost:5173', // send data to frontend
+    origin: 'http://localhost:3000', // send data to frontend
     credentials: true
 }));
 app.use(express.json()); // to process HTTPS requests
 
-app.listen(8080, () => {
-    console.log("Server started on port 8080");
+app.get("/", (req, res) => {
+    console.log('connecting attempt')
+    res.json({
+        groupName : "The First Se7en" 
+    })
 });
+
 

@@ -4,11 +4,10 @@ services:
       context: ./client
       dockerfile: Dockerfile.client
     volumes:
-      - ./client:/app/client
+      - ./client:/app
+      - node_modules:/app/node_modules 
     ports:
       - "3000:3000"
-    depends_on:
-      - database
 
   server:
     build:
@@ -16,6 +15,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./server:/var/www/html
+     #- node_modules:/var/www/html/node_modules 
     ports:
       - "8080:8080"
     depends_on:
@@ -31,3 +31,7 @@ services:
       - ./the-first-se7en.sql:/docker-entrypoint-initdb.d/the-first-se7en.sql
     ports:
       - "3306:3306"
+
+volumes:
+  mysql-data:
+  node_modules:
