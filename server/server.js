@@ -4,6 +4,12 @@ const cors = require("cors");
 const path = require("path");
 const conn = require("./Connection");
 const session = require('express-session');
+const gameQueries = require("./GameQueries")
+const corsOptions = {
+    origin: ['https://localhost:3000']
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors({
