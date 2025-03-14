@@ -9,4 +9,4 @@ const conn = mysql.createPool({
     waitForConnections: true,
 }) 
 
-module.exports = {conn}
+module.exports = conn

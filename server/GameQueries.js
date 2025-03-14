@@ -35,6 +35,11 @@ function validateUser(username, password, callback) {
     return performQuery(query, [username, password], callback);
 }
 
+function signUp(username, password, xp = 5, callback) {
+    var query = "INSERT INTO player (username, password, xp_level) VALUES(?,?,?)";
+    return performQuery(query, [username, password, xp], callback);
+}
+
 function getPlayerXP(playerID, callback) {
     var query = "SELECT xp_level FROM player WHERE player_id = ?";
     return performQuery(query, playerID, callback);
