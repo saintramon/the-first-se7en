@@ -5,11 +5,9 @@ services:
       dockerfile: Dockerfile.client
     volumes:
       - ./client:/app
-      - /app/node_modules  # Prevent node_modules sync issues
+      - node_modules:/app/node_modules 
     ports:
       - "3000:3000"
-    depends_on:
-      - database
 
   server:
     build:
@@ -17,6 +15,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./server:/var/www/html
+     #- node_modules:/var/www/html/node_modules 
     ports:
       - "8080:8080"
     depends_on:
@@ -35,3 +34,4 @@ services:
 
 volumes:
   mysql-data:
+  node_modules:
