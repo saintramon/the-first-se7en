@@ -3,12 +3,12 @@ import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // import pages here
-import Home from './pages/Home/home';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import Instructions from './pages/Instructions';
-import Quest from './pages/Quest';
-import BonusQuest from './pages/BonusQuest/BonusQuest';
+import Home from './pages/home/Home';
+import Login from './pages/login/Login';
+import Signup from './pages/signup/Signup';
+import Instructions from './pages/instruction/Instructions';
+import Quest from './pages/quest/Quest';
+import BonusQuest from './pages/bonus_quest/BonusQuest';
 
 function App() {
   return (
