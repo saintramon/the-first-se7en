@@ -90,6 +90,12 @@ function xpDown(playerID, amount = 5) {
 
 /* Methods Pertaining to quest table */
 
+/* Get ALL the information associated with a quest */
+function getQuestInfo(questID, callback) {
+    var quest = "SELECT * FROM quest WHERE quest_id = ?";
+    return performQuery(query, questID, callback);
+}
+
 /* Get the 4 images associated with a quest id */
 function getQuestImages(questID, callback) {
     var query = "SELECT img_1, img_2, img_3, img_4 FROM quest WHERE quest_id = ?";
