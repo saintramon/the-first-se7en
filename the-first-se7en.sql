@@ -3,7 +3,6 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2025 at 01:53 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -85,6 +84,32 @@ CREATE TABLE `quest` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `quest`
+--
+
+INSERT INTO `quest` (`quest_id`, `img_1`, `img_2`, `img_3`, `img_4`, `answer`, `difficulty`) VALUES
+(1, 'swift1.png', 'swift2.png', 'swift3.png', 'swift4.png', 'swift', 'easy'),
+(2, 'java1.png', 'java2.png', 'java3.png', 'java4.png', 'java', 'easy'),
+(3, 'ruby1.png', 'ruby2.png', 'ruby3.png', 'ruby4.png', 'ruby', 'easy'),
+(4, 'zuse1.png', 'zuse2.png', 'zuse3.png', 'zuse4.png', 'zuse', 'easy'),
+(5, 'ada_lovelace1.png', 'ada_lovelace2.png', 'ada_lovelace3.png', 'ada_lovelace4.png', 'ada_lovelace', 'easy'),
+(6, 'react1.png', 'react2.png', 'react3.png', 'react4.png', 'react', 'easy'),
+(7, 'assembly1.png', 'assembly2.png', 'assembly3.png', 'assembly4.png', 'assembly', 'easy'),
+(8, 'mocha1.png', 'mocha2.png', 'mocha3.png', 'mocha4.png', 'mocha', 'easy'),
+(9, 'charles_babbage1.png', 'charles_babbage2.png', 'charles_babbage3.png', 'charles_babbage4.png', 'charles_babbage', 'easy'),
+(10, 'google1.png', 'google2.png', 'google3.png', 'google4.png', 'google', 'easy'),
+(11, 'prolog1.png', 'prolog2.png', 'prolog3.png', 'prolog4.png', 'prolog', 'medium'),
+(12, 'lisp1.png', 'lisp2.png', 'lisp3.png', 'lisp4.png', 'lisp', 'medium'),
+(13, 'procedural1.png', 'procedural2.png', 'procedural3.png', 'procedural4.png', 'procedural', 'medium'),
+(14, 'alphabet1.png', 'alphabet2.png', 'alphabet3.png', 'alphabet4.png', 'alphabet', 'medium'),
+(15, 'turing_machine1.png', 'turing_machine2.png', 'turing_machine3.png', 'turing_machine4.png', 'turing_machine', 'medium'),
+(16, 'statement1.png', 'statement2.png', 'statement3.png', 'statement4.png', 'statement', 'hard'),
+(17, 'lexeme1.png', 'lexeme2.png', 'lexeme3.png', 'lexeme4.png', 'lexeme', 'hard'),
+(18, 'metalanguage1.png', 'metalanguage2.png', 'metalanguage3.png', 'metalanguage4.png', 'metalanguage', 'hard'),
+(19, 'cern1.png', 'cern2.png', 'cern3.png', 'cern4.png', 'cern', 'hard'),
+(20, 'herman_hollerith1.png', 'herman_hollerith2.png', 'herman_hollerith3.png', '4.png', 'herman_hollerith', 'hard');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -127,7 +152,8 @@ ALTER TABLE `player`
 -- AUTO_INCREMENT for table `quest`
 --
 ALTER TABLE `quest`
-  MODIFY `quest_id` int(5) NOT NULL AUTO_INCREMENT COMMENT 'The primary key, in the form of an integer';
+  MODIFY `quest_id` int(5) NOT NULL AUTO_INCREMENT COMMENT 'The primary key, in the form of an integer', AUTO_INCREMENT=21;
+
 
 --
 -- Constraints for dumped tables

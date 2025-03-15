@@ -1,25 +1,28 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
-import axios from "axios";
-import './App.css'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-const apiCall = () => {
-  axios.get('http://localhost:8080').then((data) => {
-    //this console.log will be in our frontend console
-    console.log(data)
-  })
-}
+// import pages here
+import Home from './pages/home/Home';
+import Login from './pages/login/Login';
+import Signup from './pages/signup/Signup';
+import Instructions from './pages/instruction/Instructions';
+import Quest from './pages/quest/Quest';
+import BonusQuest from './pages/bonus_quest/BonusQuest';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-
-        <button onClick={apiCall}>Make API Call</button>
-
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/instructions" element={<Instructions />} />
+        <Route path="/quest" element={<Quest />} />
+        <Route path="/bonus_quest" element={<BonusQuest />} />
+      </Routes>
+    </Router> 
   );
 }
 
-export default App
+export default App;
