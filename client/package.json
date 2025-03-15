@@ -12,8 +12,11 @@
   },
   "dependencies": {
     "axios": "^1.8.1",
+<<<<<<< HEAD
     "vite": "^6.2.1"
     "bootstrap": "^5.3.3",
+=======
+>>>>>>> origin/roxas/architecture
     "express": "^4.21.2",
     "hashrouter": "^1.1.1",
     "react": "^19.0.0",
