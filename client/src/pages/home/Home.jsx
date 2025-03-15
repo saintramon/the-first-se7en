@@ -1,10 +1,9 @@
-import React from 'react';
-import XPBar from '../../components/ui/xp_bar';
+import React from 'react'
 
 function Home() {
   return (
-    <div>Home</div>
-  );
+    <div>home</div>
+  )
 }
 
 export default Home
