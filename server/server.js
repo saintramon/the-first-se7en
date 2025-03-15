@@ -2,9 +2,9 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const path = require("path");
-const conn = require("./Connection");
+const conn = require("./config/Connection");
 const session = require('express-session');
-const gameQueries = require("./GameQueries")
+const gameQueries = require("./models/GameQueries")
 const corsOptions = {
     origin: ['https://localhost:3000']
 };
@@ -24,5 +24,3 @@ app.get("/", (req, res) => {
         groupName : "The First Se7en" 
     })
 });
-
-
