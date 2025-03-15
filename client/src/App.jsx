@@ -1,16 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // import pages here
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
-import Instructions from './pages/instruction/Instructions';
+import Instructions from './pages/instructions/Instructions';
 import Quest from './pages/quest/Quest';
 import BonusQuest from './pages/bonus_quest/BonusQuest';
+import axios from '../axios.config';
 
 function App() {
+  
+  const [response, setResponse] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+        try {
+          const response = await axios.get('/');
+          console.log("API Response:", response.data); 
+          setRespo(response.data);
+        } catch {
+          console.error("Error fetching: ", error);
+        }
+    }
+  fetchData();
+  }, []);
+
   return (
     <Router>
       <Routes>

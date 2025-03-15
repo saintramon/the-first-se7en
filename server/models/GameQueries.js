@@ -1,4 +1,4 @@
-const conn = require('./Connection');
+const conn = require('../config/Connection');
 
 /** Internal Methods */
 /** Used for all queries within this class. Params can be a param list enclosed in a [] */
@@ -28,6 +28,11 @@ function xpOperation(playerID, amount, callback) {
 }
 
 /* Methods Pertaining to player table */
+
+function signUp(username, password, xp = 5, callback) {
+    var query = "INSERT INTO player (username, password, xp_level) VALUES(?,?,?)";
+    return performQuery(query, [username, password, xp], callback);
+}
 
 /* Validates user account and returns the player_id of user */
 function validateUser(username, password, callback) {
