@@ -35,11 +35,6 @@ function validateUser(username, password, callback) {
     return performQuery(query, [username, password], callback);
 }
 
-function signUp(username, password, xp = 5, callback) {
-    var query = "INSERT INTO player (username, password, xp_level) VALUES(?,?,?)";
-    return performQuery(query, [username, password, xp], callback);
-}
-
 function getPlayerXP(playerID, callback) {
     var query = "SELECT xp_level FROM player WHERE player_id = ?";
     return performQuery(query, playerID, callback);
@@ -95,6 +90,12 @@ function xpDown(playerID, amount = 5) {
 
 /* Methods Pertaining to quest table */
 
+/* Get ALL the information associated with a quest */
+function getQuestInfo(questID, callback) {
+    var quest = "SELECT * FROM quest WHERE quest_id = ?";
+    return performQuery(query, questID, callback);
+}
+
 /* Get the 4 images associated with a quest id */
 function getQuestImages(questID, callback) {
     var query = "SELECT img_1, img_2, img_3, img_4 FROM quest WHERE quest_id = ?";
@@ -135,6 +136,5 @@ function getBonusQuestAns(bQuestID, callback) {
 
 module.exports =  {
     validateUser, getPlayerXP, xpUP, xpDown, getQuestImages, getQuestAnswer, 
-    getQuestDifficulty, getBonusQuestID, getBonusQuestInfo, getBonusQuestAns
-
+    getQuestDifficulty, getBonusQuestID, getBonusQuestInfo, getBonusQuestAns, getQuestInfo
 }
