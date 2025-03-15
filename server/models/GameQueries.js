@@ -3,9 +3,9 @@ const conn = require('./Connection');
 /** Internal Methods */
 /** Used for all queries within this class. Params can be a param list enclosed in a [] */
 function performQuery(query, params, callback) {
-    conn.query(query, params, (err, results) =>{
-        if (err) return(err, null);
-        else return callback(null, results);
+    conn.query(query, params, (err, results) => {
+        if (err) return callback(err, null);
+        return callback(null, results);
     });
 }
 
@@ -13,8 +13,8 @@ function performQuery(query, params, callback) {
 function performUpdate(query, params, callback) {
     conn.query(query, params, (err, results) => {
         console.log(results);
-        if (err) return(err, null);
-        else return callback(null, true);
+        if (err) return callback(err, null);
+        return callback(null, true);
     });
 }
 
