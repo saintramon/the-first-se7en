@@ -1,7 +1,7 @@
 import React from 'react';
 import "./xp_bar.css";
 
-function xp_bar({ xp }) {
+function XPBar({ xp }) {
   return (
     <div className="xp-bar">
       {/* XP Star Icon */}
@@ -15,4 +15,4 @@ function xp_bar({ xp }) {
   );
 }
 
-export default xp_bar;
+export default XPBar;
