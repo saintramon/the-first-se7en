@@ -1,12 +1,18 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import "./xp_bar.css";
 
-function xp_bar() {
+function xp_bar({ xp }) {
   return (
-    <Container class='black'>
-      <p>Hello</p>
-    </Container>
-  )
+    <div className="xp-bar">
+      {/* XP Star Icon */}
+      <div className="xp-star">
+        <img src="/xp-star.png" alt="XP Star" />
+      </div>
+
+      {/* XP Value */}
+      <span className="xp-value">{xp}</span>
+    </div>
+  );
 }
 
-export default xp-bar;
+export default xp_bar;
