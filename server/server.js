@@ -10,19 +10,12 @@ const gameQueries = require("./models/GameQueries")
 const PORT = 8080;
 
 /* Routers */
-const sigupRouter = require('./routes/Signup');
+const signupRouter = require('./routes/Signup');
 const loginRouter = require('./routes/Login');
 const homeRouter = require('./routes/Home');
 const instructionsRouter = require('./routes/Instructions');
 const questRouter = require('./routes/Quest');
 const bonusQuestRouter = require('./routes/BonusQuest');
-
-
-const corsOptions = {
-    origin: ['https://localhost:3000']
-};
-
-app.use(cors(corsOptions));
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors({
@@ -30,22 +23,19 @@ app.use(cors({
     credentials: true
 }));
 
-//app.use(express.json()); // to process HTTPS requests
+// Routes
+app.use('/api/signup', signupRouter);
+app.use('/api/login', loginRouter);
+app.use('/api/home', homeRouter);
+app.use('/api/instructions', instructionsRouter);
+app.use('/api/quest', questRouter);
+app.use('/api/bonusQuest', bonusQuestRouter);
 
-
-
-app.use('/signup', sigupRouter);
-//app.use('/login', loginRouter);
-app.use('/home', homeRouter);
-app.use('/instructions', instructionsRouter);
-app.use('/quest', questRouter);
-app.use('/bonusQuest', bonusQuestRouter);
-
-app.get('/logout', (req, res) => {
-    //TODO: Logout
+app.get('/api/logout', (req, res) => {
+    // TODO
 });
 
-app.get("/", (req, res) => {
+app.get("/api/", (req, res) => {
     console.log('connecting attempt')
     res.json({
         groupName : "The First Se7en" 
@@ -55,8 +45,3 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
     console.log(`RUNNING SERVER AT http://localhost:${PORT}`);
 })
-
-
-
-
-
