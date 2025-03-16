@@ -46,4 +46,10 @@ app.get("/api/", (req, res) => {
 
 app.listen(PORT, () => {
     console.log(`RUNNING SERVER AT http://localhost:${PORT}`);
-})
+});
+
+app.use(session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: false
+}));
