@@ -10,13 +10,15 @@ function processQuestInfo(results) {
     }
 
     return results.map(quest => ({
-        questImages: [quest.img_1, quest.img_2, quest.img_3, quest.img_4], // Array of the images
+        questImages: [quest.img_1, quest.img_2, quest.img_3, quest.img_4], // Images of the quest
         questAnswer: quest.answer,
         questDifficulty: quest.difficulty
     }));
 }
 
-
+/**
+ * Returns a promise of the infromation of a certain quest
+ */
 function getQuestInformation(questID) {
     return new Promise((resolve, reject) => {
         getQuestInfo(questID, (err, results) => {
