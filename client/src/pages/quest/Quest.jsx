@@ -15,16 +15,20 @@ function Quest() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/quest') 
+    fetch('http://localhost:8080/api/quest')
       .then((res) => res.json())
       .then((data) => {
-        if (data.error) {
+        console.log("Fetched Quest Data:", data); //For debugging
+        if (data?.error) {
           setError(data.error);
         } else {
           setQuest(data);
         }
       })
-      .catch(() => setError("Failed to load quest"));
+      .catch((err) => {
+        console.error("Failed to load quest:", err);
+        setError("Failed to load quest");
+      });
   }, []);
 
   if (error) return <div>Error: {error}</div>;
@@ -41,7 +45,7 @@ function Quest() {
         
         <div className="quest-content">
           <div className="quest-left">
-            <QuestImageHolder images={quest.images} />
+            <QuestImageHolder images={quest.images || []} />
           </div>
           
           <div className="quest-right">
