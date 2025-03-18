@@ -7,7 +7,7 @@ import './login_form.css';
 
 function LoginForm() {
     return (
-    <Card className="card">
+    <Card className="login-card">
         <Card.Body>
             <h2>Log In</h2>
             <p>No account yet? <Link to="/signup" className="signup-link">Sign up</Link> and get 10 XP!</p>                <Form>

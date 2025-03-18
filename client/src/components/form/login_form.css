@@ -1,4 +1,4 @@
-.card {
+.login-card {
     width: 29.875rem;
     height: auto;
     border-radius: 0.9375rem;
@@ -10,9 +10,11 @@
 /* Overall layout */
 .login-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 100vw;
     background: url('../../assets/bg-img/auth-bg.png') no-repeat center center;
     background-size: cover;
 }
@@ -55,4 +57,11 @@ p {
     padding: 10px;
     font-size: 18px;
     border-radius: 10px;
+}
+
+.logo {
+    margin-top: -30rem;
+    width: 500px;    
+    height: auto;
+    margin-bottom: -5rem;
 }
