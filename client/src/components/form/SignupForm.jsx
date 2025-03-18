@@ -1,9 +1,9 @@
-import React, { use, useState } from 'react';
-import Card from 'react-bootstrap/Card';
+import React, { useState } from 'react';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
+import SignupBtn from '../ui/SignupBtn';
 import './forms.css';
 
 function SignupForm() {
@@ -34,7 +34,7 @@ function SignupForm() {
     <Card className="login-card">
         <Card.Body>
             <h2>Create Account</h2>
-            <p>Already have an account?
+            <p>Already have an account? 
                 <Link to="/login" className="signup-link">
                     Log In
                 </Link></p>                
@@ -66,9 +66,7 @@ function SignupForm() {
                         required
                     />
                 </Form.Group>
-                <Button variant="primary" type="submit" className="submit-button">
-                    Sign up
-                </Button>
+                <SignupBtn type="submit" />
             </Form>
         </Card.Body>
     </Card>
