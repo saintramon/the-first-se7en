@@ -21,8 +21,8 @@ function App() {
         try {
           const response = await axios.get('/');
           console.log("API Response:", response.data); 
-          setRespo(response.data);
-        } catch {
+          setResponse(response.data);
+        } catch (error){
           console.error("Error fetching: ", error);
         }
     }
