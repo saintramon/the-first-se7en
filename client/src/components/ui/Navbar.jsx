@@ -2,6 +2,7 @@ import React from "react";
 import ReturnBtn from "./ReturnBtn";
 import Logo from "./Logo";
 import LogOutBtn from "./LogOutBtn";
+import XPbar from "./XPbar";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -10,7 +11,7 @@ const Navbar = () => {
       <ReturnBtn />
       <Logo />
       <div className="navbar-content">
-        <div className="xp-placeholder"></div>
+        <XPbar />
         <LogOutBtn />
       </div>
     </div>
