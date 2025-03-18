@@ -1,5 +1,24 @@
 const model = require('../models/QuestModel');
 
+const generateLetterSet = (answer) => {
+    const randomLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let letterSet = answer.toUpperCase().split(""); // Add answer letters
+
+    // Add random letters until letterSet length is 20
+    while (letterSet.length < 20) {
+        const randomIndex = Math.floor(Math.random() * randomLetters.length);
+        letterSet.push(randomLetters[randomIndex]);
+    }
+
+    // Shuffle the letterSet
+    for (let i = letterSet.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [letterSet[i], letterSet[j]] = [letterSet[j], letterSet[i]];
+    }
+
+    return letterSet;
+};
+
 const index = async (req, res) => {
     try {
         const questID = 1; // Hardcoded for testing
@@ -10,12 +29,14 @@ const index = async (req, res) => {
         }
 
         const quest = questInfoArray[0];
+        const letterSet = generateLetterSet(quest.questAnswer);
 
         res.status(200).json({
             message: "Quest retrieved successfully",
             difficulty: quest.questDifficulty,
             images: quest.questImages,
-            answer: quest.questAnswer
+            answer: quest.questAnswer,
+            letterSet: letterSet
         });
 
     } catch (error) {
