@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BGContainer from '../../components/ui/BGContainer';
 import Navbar from '../../components/ui/Navbar';
+import QuestDifficulty from '../../components/ui/QuestDifficulty';
 import QuestImageHolder from '../../components/ui/QuestImageHolder';
 import AnswerHolder from '../../components/ui/AnswerHolder';
 import LetterSet from '../../components/ui/LetterSet';
@@ -35,7 +36,7 @@ function Quest() {
         <Navbar />
         
         <div className="quest-heading">
-          <h2>{quest.difficulty} <span>Quest</span></h2>
+          <QuestDifficulty level={quest.difficulty.toUpperCase()} />
         </div>
         
         <div className="quest-content">

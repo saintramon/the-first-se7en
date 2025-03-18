@@ -8,14 +8,14 @@
   cursor: pointer;
   background: none !important;
   position: absolute; 
-  right: 170px; 
+  right: 140px; 
   top: 50%; 
   transform: translateY(-50%); 
 }
 
 
   .logout-btn img {
-    width: 50px;
+    width: 30px;
     display: block;
   }
   

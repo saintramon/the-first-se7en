@@ -6,18 +6,13 @@
 }
 
 .quest-heading {
-  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-top: 10px;
-}
-
-.quest-heading h2 {
-  font-size: 24px;
-  margin: 0;
-}
-
-.quest-heading span {
-  font-size: 32px;
-  font-weight: bold;
+  width: 100%; 
+  text-align: center;
 }
 
 .quest-content {
