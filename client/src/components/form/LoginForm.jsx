@@ -18,12 +18,12 @@ function LoginForm() {
         try {
             const response = await axios.post('/api/login', {
                 username,
-                password
+                password       
             });
 
             // TODO: implementation of receiving
 
-            navigate('/dashboard');
+            navigate('/home');
         } catch (err) {
             console.error('Login error:', err.response?.data || err.message);
             setError(err.response?.data?.message || 'Login failed.');
@@ -34,9 +34,11 @@ function LoginForm() {
     <Card className="login-card">
         <Card.Body>
             <h2>Log In</h2>
-            <p>No account yet? <Link to="/signup" className="signup-link">
-                Sign up</Link> and get 10 XP!
-                </p>               
+            <p>No account yet? 
+                <Link to="/signup" className="signup-link">
+                    Sign up
+                </Link> 
+                and get 10 XP!</p>               
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                     <Form.Control 
@@ -52,7 +54,8 @@ function LoginForm() {
                         type="password"
                         placeholder="Password"
                         value={password}
-                        onChange={(e) => setUsername(e.target.value)}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
                     />
                 </Form.Group>
                 <Button variant="primary" type="submit" className="submit-button">
