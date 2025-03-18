@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Card from 'react-bootstrap/Card';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
+import LoginBtn from '../ui/LoginBtn';
 import './forms.css';
 
 function LoginForm() {
@@ -34,11 +34,7 @@ function LoginForm() {
     <Card className="login-card">
         <Card.Body>
             <h2>Log In</h2>
-            <p>No account yet? 
-                <Link to="/signup" className="signup-link">
-                    Sign up
-                </Link> 
-                and get 10 XP!</p>               
+            <p>No account yet? <Link to="/signup" className="signup-link">Sign up </Link> and get 10 XP!</p>               
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                     <Form.Control 
@@ -58,9 +54,7 @@ function LoginForm() {
                         required
                     />
                 </Form.Group>
-                <Button variant="primary" type="submit" className="submit-button">
-                    Login
-                </Button>
+                <LoginBtn type="submit" />
             </Form>
         </Card.Body>
     </Card>
