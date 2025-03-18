@@ -1,6 +1,6 @@
 import React from 'react'
 import './LogOut.css'
-import logoutImg from '../../assets/bg-img/logout_icon.png'
+import logoutImg from '../../assets/icon/logout_icon.png'
 
 function LogOutBtn() {
   return (

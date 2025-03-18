@@ -3,7 +3,7 @@ import ReturnBtn from "./ReturnBtn";
 import Logo from "./Logo";
 import LogOutBtn from "./LogOutBtn";
 import XPbar from "./XPbar";
-import "./Navbar.css";
+import "./navbar.css";
 
 const Navbar = () => {
   return (

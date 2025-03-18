@@ -1,6 +1,6 @@
 import React from 'react'
 import './Return.css'
-import rtn from '../../assets/bg-img/return_icon.png'
+import rtn from '../../assets/icon/return_icon.png'
 
 function ReturnBtn() {
   return (
