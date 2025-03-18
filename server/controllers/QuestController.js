@@ -2,7 +2,7 @@ const model = require('../../models/QuestModel');
 
 const index = async (req, res) => {
     try {
-        // const questID = req.session.questID;
+        const questID = 1; //Constant for now to check
         if (!questID) {
             return res.status(400).json({ error: "Quest ID is required" });
         }
