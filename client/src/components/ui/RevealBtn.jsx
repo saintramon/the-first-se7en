@@ -1,6 +1,6 @@
 import React from 'react'
 import './Reveal.css'
-import lightbulb from '../../assets/bg-img/light_bulb.png'
+import lightbulb from '../../assets/icon/light_bulb.png'
 
 function RevealBtn() {
   return (

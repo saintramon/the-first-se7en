@@ -2,7 +2,7 @@ import React from "react";
 import ReturnBtn from "./ReturnBtn";
 import Logo from "./Logo";
 import LogOutBtn from "./LogOutBtn";
-import XPbar from "./XPbar";
+import XPbar from "./XPBar";
 import "./navbar.css";
 
 const Navbar = () => {
