@@ -1,29 +1,42 @@
-const model = require('../../models/QuestModel');
+const model = require('../models/QuestModel');
+
+const generateLetterSet = (answer) => {
+    const randomLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let letterSet = answer.toUpperCase().split(""); // Add answer letters
+
+    // Add random letters until letterSet length is 20
+    while (letterSet.length < 20) {
+        const randomIndex = Math.floor(Math.random() * randomLetters.length);
+        letterSet.push(randomLetters[randomIndex]);
+    }
+
+    // Shuffle the letterSet
+    for (let i = letterSet.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [letterSet[i], letterSet[j]] = [letterSet[j], letterSet[i]];
+    }
+
+    return letterSet;
+};
 
 const index = async (req, res) => {
     try {
-        const questID = req.session.questID;
-        if (!questID) {
-            return res.status(400).json({ error: "Quest ID is required" });
-        }
-
-        // Fetch quest details using async/await
+        const questID = 1; // Hardcoded for testing
         const questInfoArray = await model.getQuestInformation(questID);
 
-        // If no quest found, return a 404 response
         if (!questInfoArray || questInfoArray.length === 0) {
             return res.status(404).json({ error: "Quest not found" });
         }
 
-        // Extract the first (and only) quest from the array
         const quest = questInfoArray[0];
+        const letterSet = generateLetterSet(quest.questAnswer);
 
-        // Send response to frontend
         res.status(200).json({
             message: "Quest retrieved successfully",
             difficulty: quest.questDifficulty,
             images: quest.questImages,
-            answer: quest.questAnswer
+            answer: quest.questAnswer,
+            letterSet: letterSet
         });
 
     } catch (error) {
@@ -32,6 +45,17 @@ const index = async (req, res) => {
     }
 };
 
-module.exports = {
-    index
+// Placeholder functions to prevent "undefined" error
+const submitAnswers = (req, res) => {
+    res.status(200).json({ message: "Submit Answers - Not Implemented Yet" });
 };
+
+const revealLetter = (req, res) => {
+    res.status(200).json({ message: "Reveal Letter - Not Implemented Yet" });
+};
+
+const removeLetter = (req, res) => {
+    res.status(200).json({ message: "Remove Letter - Not Implemented Yet" });
+};
+
+module.exports = { index, submitAnswers, revealLetter, removeLetter };

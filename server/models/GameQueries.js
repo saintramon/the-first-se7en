@@ -97,7 +97,7 @@ function xpDown(playerID, amount = 5) {
 
 /* Get ALL the information associated with a quest */
 function getQuestInfo(questID, callback) {
-    var quest = "SELECT * FROM quest WHERE quest_id = ?";
+    var query = "SELECT * FROM quest WHERE quest_id = ?";
     return performQuery(query, questID, callback);
 }
 
