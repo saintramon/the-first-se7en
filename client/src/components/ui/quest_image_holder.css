@@ -1,21 +1,12 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #ffffff; 
-    margin: 0;
-}
-
-/* 2x2 grid */
 .quest-image-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(2, 1fr);
     gap: 15px;
-    padding: 20px;
-}
-
-.quest-image-holder {
+    width: fit-content;
+  }
+  
+  .quest-image-holder {
     width: 150px;
     height: 150px;
     background: white;
@@ -25,9 +16,9 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-}
-
-.quest-image-holder img {
+  }
+  
+  .quest-image-holder img {
     max-width: 100%;
     max-height: 100%;
-}
+  }
