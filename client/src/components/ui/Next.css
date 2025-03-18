@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
+button {
+    background-color: #4B5AE4;
+    font-family: 'Manrope', sans-serif;
+    font-size: 30px;
+    border: none;
+    width: 250px;
+    height: 72px;
+    padding: 1rem;
+    border-radius: 1rem;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 0.4rem #dfd9d9;
+    cursor: pointer;
+   }
+   
+   button:active {
+    color: white;
+    box-shadow: 0 0.2rem #dfd9d9;
+    transform: translateY(0.2rem);
+   }
+   
+   button:hover:not(:disabled) {
+    background: #1f32de;
+    color: #f5bb3d;
+   }
+   
+   button:disabled {
+    cursor: auto;
+    color: grey;
+   }
