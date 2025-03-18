@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const bonusQuestModel = require('../models/bonusQuestModel')
+const bonusQuestModel = require('../models/BonusQuestModel')
 
 // When someone succesfully logs in get xp
 router.get('/', (req, res) => {
