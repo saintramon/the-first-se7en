@@ -24,5 +24,3 @@ dist-ssr
 *.sw?
 
 mysql-data/
-server/node_modules/
-client/node_modules/
