@@ -23,7 +23,7 @@ const generateLetterSet = (answer) => {
 
 const index = async (req, res) => {
     try {
-        const questID = 5; // Hardcoded for testing
+        const questID = Math.floor(Math.random() * 20) + 1; 
         const questInfoArray = await model.getQuestInformation(questID);
 
         if (!questInfoArray || questInfoArray.length === 0) {
