@@ -2,29 +2,29 @@ body, html {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-}
-
-.background-container {
+	height: 100%;
+	width: 100%;
+  }
+  
+  .background-container {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	flex-direction: column;
 	background-size: cover;
 	background-position: center;
 	transition: background-image 0.5s ease-in-out;
-}
-
-/* Backgrounds for each difficulty */
-.background-container.easy {
+  }
+  
+  /* Backgrounds for each difficulty */
+  .background-container.easy {
 	background-image: url("../../assets/bg-img/easy-bg.png");
-}
-
-.background-container.medium {
+  }
+  
+  .background-container.medium {
 	background-image: url("../../assets/bg-img/medium-bg.png");
-}
-
-.background-container.hard {
+  }
+  
+  .background-container.hard {
 	background-image: url("../../assets/bg-img/hard-bg.png");
-}
-
+  }

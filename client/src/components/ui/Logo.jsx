@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from "../../assets/icon/litra2code.png"
 
-const Logo  = ({ size = "100px", className = "" }) => {
+const Logo  = ({ size = "150px", className = "" }) => {
     return (
       <img
         src={logo}

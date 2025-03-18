@@ -2,16 +2,16 @@
 	display: grid;
 	grid-template-columns: repeat(8, 1fr); 
 	grid-template-rows: repeat(3, auto); 
-	gap: 10px;
+	gap: 15px;
 	justify-content: center;
 	width: fit-content;
-	margin: auto;
-}
-
-.letter-button {
-	width: 60px;
-	height: 60px;
-	font-size: 36px;
+	margin: 0 auto;
+  }
+  
+  .letter-button {
+	width: 70px;
+	height: 70px;
+	font-size: 40px;
 	font-weight: bolder;
 	border: 3px solid #cccccc; 
 	border-radius: 16px;
@@ -22,19 +22,19 @@
 	justify-content: center;
 	align-items: center;
 	color: black;
-}
-
-.letter-button:hover {
+  }
+  
+  .letter-button:hover {
 	background: linear-gradient(to bottom, #dddddd, #aaaaaa);
-    border-color: #aaaaaa;
-}
-
-/* Target last row (4 letters) and place them in columns 3 to 6 */
-.letter-button:nth-child(n+17) {
+	border-color: #aaaaaa;
+  }
+  
+  /* Target last row (4 letters) and center them */
+  .letter-button:nth-child(n+17) {
 	grid-column: span 1;
-}
-
-.letter-button:nth-child(17) { grid-column: 3; }
-.letter-button:nth-child(18) { grid-column: 4; }
-.letter-button:nth-child(19) { grid-column: 5; }
-.letter-button:nth-child(20) { grid-column: 6; }
+  }
+  
+  .letter-button:nth-child(17) { grid-column: 3; }
+  .letter-button:nth-child(18) { grid-column: 4; }
+  .letter-button:nth-child(19) { grid-column: 5; }
+  .letter-button:nth-child(20) { grid-column: 6; }

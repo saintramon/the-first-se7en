@@ -1,0 +1,40 @@
+.quest-difficulty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 24px;
+    border: 5px solid;
+    max-width: 250px; 
+    position: relative; 
+    text-transform: uppercase; 
+  }
+  
+  .quest-text {
+    font-size: 16px;
+    font-weight: normal;
+  }
+  
+  .difficulty-text {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .EASY {
+    background-color: #DDFBFF;
+    border-color: #3A5EF0;
+  }
+  
+  .MEDIUM {
+    background-color: #F9F470;
+    border-color: #F99E6C;
+  }
+  
+  .HARD {
+    background-color: #E57373;
+    border-color: #E3A656;
+  }
+  
