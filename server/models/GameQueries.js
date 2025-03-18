@@ -28,10 +28,15 @@ function xpOperation(playerID, amount, callback) {
 }
 
 /* Methods Pertaining to player table */
-
-function signUp(username, password, xp = 5, callback) {
-    var query = "INSERT INTO player (username, password, xp_level) VALUES(?,?,?)";
-    return performQuery(query, [username, password, xp], callback);
+/*signup*/
+async function signUp(username, password, xp = 10) {
+    const query = "INSERT INTO player (username, password, xp_level) VALUES (?, ?, ?)";
+    try {
+        const result = await performQuery(query, [username, password, xp]);
+        return { success: true, playerId: result.insertId };
+    } catch (error) {
+        throw new Error("Signup failed: " + error.message);
+    }
 }
 
 /* Validates user account and returns the player_id of user */
@@ -141,5 +146,5 @@ function getBonusQuestAns(bQuestID, callback) {
 
 module.exports =  {
     validateUser, getPlayerXP, xpUP, xpDown, getQuestImages, getQuestAnswer, 
-    getQuestDifficulty, getBonusQuestID, getBonusQuestInfo, getBonusQuestAns, getQuestInfo
+    getQuestDifficulty, getBonusQuestID, getBonusQuestInfo, getBonusQuestAns, getQuestInfo, signUp, performQuery
 }
