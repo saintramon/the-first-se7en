@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -10,7 +10,7 @@ import Signup from './pages/signup/Signup';
 import Instructions from './pages/instructions/Instructions';
 import Quest from './pages/quest/Quest';
 import BonusQuest from './pages/bonus_quest/BonusQuest';
-import axios from '../axios.config';
+import axios from './utils/axios.config';
 
 function App() {
   
@@ -19,9 +19,10 @@ function App() {
   useEffect(() => {
     async function fetchData() {
         try {
-          const response = await axios.get('/api/');
+          const response = await axios.get('/api');
           console.log("API Response:", response.data); 
           setResponse(response.data);
+        } catch (error) {
           console.error("Error fetching: ", error);
         }
     }

@@ -22,6 +22,8 @@ app.use(cors({
     origin: 'http://localhost:3000', // send data to frontend
     credentials: true
 }));
+app.use(express.json);
+app.use(express.urlencoded({extended: true}));
 
 // Routes
 app.use('/api/signup', signupRouter);
