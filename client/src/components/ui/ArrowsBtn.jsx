@@ -1,16 +1,16 @@
 import React from 'react'
-import Prev from './prev.png'
-import Next from './next.png'
+import prev from '../../assets/icon/prev.png'
+import next from '../../assets/icon/next.png'
 import './Arrows.css'
 
 function ArrowsBtn() {
   return (
     <div>
       <button class="btn">
-        <img src={Prev} alt="Previous"/>
+        <img src={prev} alt="Previous"/>
       </button>
       <button class="btn">
-        <img src={Next} alt="Next"/>
+        <img src={next} alt="Next"/>
       </button>
     </div>
   );

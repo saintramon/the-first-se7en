@@ -17,14 +17,14 @@ body, html {
 
 /* Backgrounds for each difficulty */
 .background-container.easy {
-	background-image: url("/assets/bg-img/easy-bg.png");
+	background-image: url("../../assets/bg-img/easy-bg.png");
 }
 
 .background-container.medium {
-	background-image: url("/assets/bg-img/medium-bg.png");
+	background-image: url("../../assets/bg-img/medium-bg.png");
 }
 
 .background-container.hard {
-	background-image: url("/assets/bg-img/hard-bg.png");
+	background-image: url("../../assets/bg-img/hard-bg.png");
 }
 

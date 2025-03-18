@@ -1,0 +1,17 @@
+.quest-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .quest-left {
+    width: 40%;
+  }
+  
+  .quest-right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
