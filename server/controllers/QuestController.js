@@ -2,7 +2,8 @@ const model = require('../models/QuestModel');
 
 const generateLetterSet = (answer) => {
     const randomLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    let letterSet = answer.toUpperCase().split(""); // Add answer letters
+    let cleanAnswer = answer.replace(/[_\s]/g, "").toUpperCase(); // Remove spaces & underscores
+    let letterSet = cleanAnswer.split(""); // Convert answer to an array of letters
 
     // Add random letters until letterSet length is 20
     while (letterSet.length < 20) {
@@ -19,9 +20,10 @@ const generateLetterSet = (answer) => {
     return letterSet;
 };
 
+
 const index = async (req, res) => {
     try {
-        const questID = 1; // Hardcoded for testing
+        const questID = 5; // Hardcoded for testing
         const questInfoArray = await model.getQuestInformation(questID);
 
         if (!questInfoArray || questInfoArray.length === 0) {
