@@ -2,26 +2,18 @@ const express = require('express');
 
 const router = express.Router();
 
-const questModel = require('../models/QuestModel')
+const QuestController = require('../controllers/QuestController');
 
 // When someone enters the quest page
-router.get('/', (req, res) => {
+router.get('/', QuestController.index);
 
-});
-
-// When someone submit their answers
-router.post('/submit', (req, res) => {
-
-});
+// When someone submits their answers
+router.post('/submit', QuestController.submitAnswers);
 
 // When someone wants to reveal a letter
-router.post('/revealLetter', (req, res) => {
-
-});
+router.post('/revealLetter', QuestController.revealLetter);
 
 // When someone wants to remove a letter
-router.post('/removeLetter', (req, res) => {
-
-});
+router.post('/removeLetter', QuestController.removeLetter);
 
 module.exports = router;

@@ -1,24 +1,16 @@
-const model = require('../../models/QuestModel');
+const model = require('../models/QuestModel');
 
 const index = async (req, res) => {
     try {
-        const questID = 1; //Constant for now to check
-        if (!questID) {
-            return res.status(400).json({ error: "Quest ID is required" });
-        }
-
-        // Fetch quest details using async/await
+        const questID = 1; // Hardcoded for testing
         const questInfoArray = await model.getQuestInformation(questID);
 
-        // If no quest found, return a 404 response
         if (!questInfoArray || questInfoArray.length === 0) {
             return res.status(404).json({ error: "Quest not found" });
         }
 
-        // Extract the first (and only) quest from the array
         const quest = questInfoArray[0];
 
-        // Send response to frontend
         res.status(200).json({
             message: "Quest retrieved successfully",
             difficulty: quest.questDifficulty,
@@ -32,6 +24,17 @@ const index = async (req, res) => {
     }
 };
 
-module.exports = {
-    index
+// Placeholder functions to prevent "undefined" error
+const submitAnswers = (req, res) => {
+    res.status(200).json({ message: "Submit Answers - Not Implemented Yet" });
 };
+
+const revealLetter = (req, res) => {
+    res.status(200).json({ message: "Reveal Letter - Not Implemented Yet" });
+};
+
+const removeLetter = (req, res) => {
+    res.status(200).json({ message: "Remove Letter - Not Implemented Yet" });
+};
+
+module.exports = { index, submitAnswers, revealLetter, removeLetter };
