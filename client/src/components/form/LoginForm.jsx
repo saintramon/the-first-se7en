@@ -16,7 +16,7 @@ function LoginForm() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:8080/api/login', {
+            const response = await axios.post('/api/login', {
                 username,
                 password
             });
@@ -34,14 +34,28 @@ function LoginForm() {
     <Card className="login-card">
         <Card.Body>
             <h2>Log In</h2>
-            <p>No account yet? <Link to="/signup" className="signup-link">Sign up</Link> and get 10 XP!</p>                <Form>
-            <Form.Group className="mb-3">
-                <Form.Control type="text" placeholder="Username"/>
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Control type="password" placeholder="Password"/>
-            </Form.Group>
-                <Button variant="primary" type="submit">
+            <p>No account yet? <Link to="/signup" className="signup-link">
+                Sign up</Link> and get 10 XP!
+                </p>               
+            <Form onSubmit={handleSubmit}>
+                <Form.Group className="mb-3">
+                    <Form.Control 
+                        type="text"
+                        placeholder="Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </Form.Group>
+                <Button variant="primary" type="submit" className="submit-button">
                     Login
                 </Button>
             </Form>

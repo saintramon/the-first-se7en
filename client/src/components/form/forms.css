@@ -52,11 +52,16 @@ p {
 }
 
 /* Login button */
-.login-button {
-    width: 100%;
-    padding: 10px;
-    font-size: 18px;
-    border-radius: 10px;
+.submit-button {
+    color: #F4F4F4;
+    text-align: center;
+    /*font-family: Manrope;*/
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    border-radius: 0.9375rem;
+    background: #4B5AE4;
 }
 
 .logo {
