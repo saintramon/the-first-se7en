@@ -8,11 +8,15 @@ import "./navbar.css";
 const Navbar = () => {
   return (
     <div className="navbar">
-      <ReturnBtn />
-      <Logo />
-      <div className="navbar-content">
-        <XPbar />
+      <div className="left-section">
+        <ReturnBtn />
+      </div>
+      <div className="logo-container">
+        <Logo />
+      </div>
+      <div className="right-section">
         <LogOutBtn />
+        <XPbar xp="100"/>
       </div>
     </div>
   );

@@ -1,15 +1,27 @@
-.btn {
-    width: 50px;
-    height: 50px;
-    background-color: transparent;
-    border: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-  }
+.return-btn {
+  all: unset; /* Resets default button styles because it has shadows and idk why */
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  cursor: pointer;
+  left: 10;
+  top: 50%;
+  transform: translateY(-50%); 
+}
 
-  .btn img {
-    width: 40px;
-  }
+.return-btn img {
+  width: 60px;
+}
+
+.return-btn:hover {
+  background: transparent !important; 
+}
+
+.return-btn:focus,
+.return-btn:active {
+  outline: none;
+  box-shadow: none; 
+}
