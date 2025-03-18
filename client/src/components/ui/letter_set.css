@@ -2,16 +2,16 @@
 	display: grid;
 	grid-template-columns: repeat(8, 1fr); 
 	grid-template-rows: repeat(3, auto); 
-	gap: 10px;
+	gap: 15px;
 	justify-content: center;
 	width: fit-content;
 	margin: 0 auto;
   }
   
   .letter-button {
-	width: 60px;
-	height: 60px;
-	font-size: 36px;
+	width: 70px;
+	height: 70px;
+	font-size: 40px;
 	font-weight: bolder;
 	border: 3px solid #cccccc; 
 	border-radius: 16px;

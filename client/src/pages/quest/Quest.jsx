@@ -18,7 +18,7 @@ function Quest() {
     fetch('http://localhost:8080/api/quest')
       .then((res) => res.json())
       .then((data) => {
-        console.log("Fetched Quest Data:", data); //For debugging
+        console.log("Fetched Quest Data:", data); // For debugging
         if (data?.error) {
           setError(data.error);
         } else {
@@ -38,19 +38,25 @@ function Quest() {
     <BGContainer difficulty={quest.difficulty}>
       <div className="quest-page">
         <Navbar />
-        
+
         <div className="quest-heading">
           <QuestDifficulty level={quest.difficulty.toUpperCase()} />
         </div>
-        
+
         <div className="quest-content">
           <div className="quest-left">
             <QuestImageHolder images={quest.images || []} />
           </div>
-          
+
           <div className="quest-right">
-            <AnswerHolder words={quest.answer.split(" ")} />
-            <LetterSet letters={quest.letterSet} onLetterClick={() => {}} />
+            <AnswerHolder words={quest.answer.replace(/_/g, " ").split(" ")} />
+            
+            <div className="letter-set-wrapper">
+              <div className="letter-set-container">
+                <LetterSet letters={quest.letterSet} onLetterClick={() => {}} />
+              </div>
+            </div>
+
             <div className="action-buttons">
               <RevealBtn />
               <RemoveBtn />
