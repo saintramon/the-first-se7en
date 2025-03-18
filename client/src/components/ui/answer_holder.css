@@ -1,0 +1,27 @@
+.answer-container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	align-items: center;
+}
+
+.answer-row {
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+}
+
+.answer-holder {
+	width: 60px;
+	height: 60px;
+	border-radius: 16px;
+	background: linear-gradient(to bottom, #f2f2f2, #d9d9d9); 
+	box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.2); /* Hole Effect for answer holder (Empty vibe)*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: transparent; 
+	font-size: 36px;
+	font-weight: bold;
+	border: none; 
+}
