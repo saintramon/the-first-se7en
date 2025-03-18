@@ -1,12 +1,13 @@
 import React from 'react';
 import "./xp_bar.css";
+import xpStar from '../../assets/icon/xp_bar.png';
 
 function XPBar({ xp }) {
   return (
     <div className="xp-bar">
       {/* XP Star Icon */}
       <div className="xp-star">
-        <img src="/xp-star.png" alt="XP Star" />
+        <img src={xpStar} alt="XP Star" />
       </div>
 
       {/* XP Value */}

@@ -1,6 +1,6 @@
 import React from 'react'
 import './Back.css'
-import close from './close.png'
+import close from '../../assets/icon/close.png'
 
 function BackBtn() {
   return (

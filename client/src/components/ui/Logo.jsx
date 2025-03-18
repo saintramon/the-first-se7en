@@ -1,9 +1,10 @@
 import React from 'react'
+import logo from "../../assets/icon/litra2code.png"
 
 const Logo  = ({ size = "100px", className = "" }) => {
     return (
       <img
-        src="client\src\assets\icon\litra2code.png"
+        src={logo}
         alt="Logo"
         className={className}
         style={{ width: size, height: size, objectFit: "contain" }}
