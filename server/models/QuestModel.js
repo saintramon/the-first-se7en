@@ -32,19 +32,25 @@ function getQuestInformation(questID) {
         })
     })
 }
-
-function submitAnswers() {
-
-}
-
-function revealLetter() {
+function processAnswer(results) {
+    // TODO:
 
 }
 
-function removeLetter() {
-
+function getQuestAnswerPromise(questID) {
+    return new Promise((resolve, reject) => {
+        getQuestAnswer(questID, (err, results) => {
+            if (err) return reject(err);
+            else {
+                console.log("Raw results: ", results);
+                const processedAnswer = processAnswer(results);
+                resolve(processedAnswer);
+            }
+        });
+    });
 }
+
 
 module.exports = {
-    getQuestInformation, submitAnswers, revealLetter, removeLetter
+    getQuestInformation, getQuestAnswer,
 }

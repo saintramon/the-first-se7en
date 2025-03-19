@@ -8,12 +8,12 @@ const QuestController = require('../controllers/QuestController');
 router.get('/', QuestController.index);
 
 // When someone submits their answers
-router.post('/submit', QuestController.submitAnswers);
+//router.post('/submit', QuestController.submitAnswers);
 
 // When someone wants to reveal a letter
-router.post('/revealLetter', QuestController.revealLetter);
+//router.post('/revealLetter', QuestController.revealLetter);
 
 // When someone wants to remove a letter
-router.post('/removeLetter', QuestController.removeLetter);
+//router.post('/removeLetter', QuestController.removeLetter);
 
 module.exports = router;
