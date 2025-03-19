@@ -1,13 +1,13 @@
 import React from 'react'
-import './HowTo.css'
+import './how_to_play.css'
 
 function HowToBtn() {
   return (
-    <div>
+  <div>
     <button>
-    How to Play
-</button>
-    </div>
+      How to Play
+    </button>
+  </div>
   )
 }
 

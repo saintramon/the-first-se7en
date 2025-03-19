@@ -8,7 +8,7 @@ body {
       
   }
 
-  .btn {
+  .arrow-btn {
     width: 80px;
     height: 80px;
     border-radius: 50%;
@@ -22,7 +22,7 @@ body {
     
   }
 
-  .btn:hover {
+  .arrow-btn:hover {
     transform: scale(0.9);
   }
 

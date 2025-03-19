@@ -1,4 +1,4 @@
-.btn {
+.close-btn {
     width: 40px;
     height: 40px;
     background-color: transparent;
@@ -11,6 +11,6 @@
   }
 
 
-  .btn img {
+  .close-btn img {
     width: 30px;
   }

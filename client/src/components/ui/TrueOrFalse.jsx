@@ -1,7 +1,7 @@
 import React from 'react'
-import './Tf.css'
+import './true_or_false.css'
 
-function TfBtn() {
+function TrueOrFalseBtn() {
   return (
     <div class="container">
   <button class="option true">TRUE</button>
@@ -11,4 +11,4 @@ function TfBtn() {
   )
 }
 
-export default TfBtn
+export default TrueOrFalseBtn

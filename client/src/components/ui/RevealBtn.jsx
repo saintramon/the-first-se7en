@@ -5,7 +5,7 @@ import lightbulb from '../../assets/icon/light_bulb.png'
 function RevealBtn() {
   return (
     <div>
-        <button class = "btn">
+        <button class = "reveal-btn">
        <img src={lightbulb} alt="Reveal"/> 
        </button>
     </div>
