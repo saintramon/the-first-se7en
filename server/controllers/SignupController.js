@@ -1,4 +1,4 @@
-const { handleSignUp } = require('../models/SignupModel');
+const { handleSignUp } = require('../models/SignUpModel');
 
 async function signUpController(req, res) {
     const { username, password } = req.body;
