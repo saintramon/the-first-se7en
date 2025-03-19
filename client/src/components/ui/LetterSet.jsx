@@ -5,10 +5,11 @@ function LetterSet({ letters, onLetterClick }) {
 	return (
 		<div className="letter-set">
 			{letters.map((letter, index) => (
-				<button 
+				<button
+					id = {"button" + index}
 					key={index} 
 					className="letter-button" 
-					onClick={() => onLetterClick(letter)}
+					onClick={() => onLetterClick(index, letter)}
 				>
 					{letter}
 				</button>

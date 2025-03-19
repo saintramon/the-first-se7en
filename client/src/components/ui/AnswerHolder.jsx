@@ -6,8 +6,11 @@ function AnswerHolder({ words }) {
 		if (words.length === 1) {
 			return (
 				<div className="answer-row" style={{ justifyContent: "center" }}>
-					{words[0].split("").map((_, index) => (
-						<div key={index} className="answer-holder"></div>
+					{words[0].split("").map((word, index) => (
+						<div id={"div-" + index }key={index} className="answer-holder">
+							<h2 id={"h2-" + index}> 
+							</h2>
+						</div>
 					))}
 				</div>
 			);
@@ -15,13 +18,18 @@ function AnswerHolder({ words }) {
 			return (
 				<>
 					<div className="answer-row" style={{ justifyContent: "center" }}>
-						{words[0].split("").map((_, index) => (
-							<div key={index} className="answer-holder"></div>
+						{words[0].split("").map((word, index) => (
+						<div id={"div-" + index }key={index} className="answer-holder">
+							<h2 id={"h2-" + index}> </h2>
+						</div>
 						))}
 					</div>
 					<div className="answer-row" style={{ justifyContent: "center" }}>
-						{words[1].split("").map((_, index) => (
-							<div key={index} className="answer-holder"></div>
+						{words[1].split("").map((word, index) => (
+						<div id={"div-" + index }key={index} className="answer-holder">
+							<h2 id={"h2-" + index}> 
+							</h2>
+						</div>
 						))}
 					</div>
 				</>

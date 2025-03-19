@@ -34,6 +34,8 @@ function Quest() {
   if (error) return <div>Error: {error}</div>;
   if (!quest) return <div>Loading...</div>;
 
+  let currLetter = 0;
+
   return (
     <BGContainer difficulty={quest.difficulty}>
       <div className="quest-page">
@@ -53,7 +55,22 @@ function Quest() {
             
             <div className="letter-set-wrapper">
               <div className="letter-set-container">
-                <LetterSet letters={quest.letterSet} onLetterClick={() => {}} />
+                <LetterSet letters={quest.letterSet} onLetterClick={(id, letter) => {
+                  if (currLetter != quest.answer.length) {
+                  console.log(id + letter);
+                  let selectedIndex = document.getElementById("button" +id);
+        
+                  let specAnsHolderH2 = document.getElementById("h2-" +currLetter);
+                  let specAnsHolder = document.getElementById("div-" +currLetter);
+                  selectedIndex.disabled = true;
+                  currLetter++;
+                  console.log(specAnsHolderH2);
+                  specAnsHolderH2.innerHTML = letter;
+
+                  }
+                  //console.log(document.getElementById("button" +id));
+               //   console.log(document.getElementById(id));
+                }} />
               </div>
             </div>
 
