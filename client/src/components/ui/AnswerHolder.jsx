@@ -5,7 +5,7 @@ function AnswerHolder({ words }) {
 	const renderAnswerRows = () => {
 		if (words.length === 1) {
 			return (
-				<div className="answer-row" style={{ justifyContent: "center" }}>
+				<div id="answerHolder" className="answer-row" style={{ justifyContent: "center" }}>
 					{words[0].split("").map((word, index) => (
 						<div id={"div-" + index }key={index} className="answer-holder">
 							<h2 id={"h2-" + index}> 

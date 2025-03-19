@@ -83,23 +83,6 @@ const index = async (req, res) => {
     }
 };
 
-const verifyAnswer = (req, res) => {
-   // let correctAns = model.getQuestAnswer(req.questID);
-   // let userAnswer = req.answer;
-    if (model.getQuestAnswer(req.questID == req.answer)) {
-        res.status(200).json({
-            message: "Level Complete"
-        });
-    } else {
-        let attempts = req.attempts + 1;
-        res.status(200).json({
-            message: "Incorrect Answer",
-            attempts: attempts
-        })
-    }
-    res.status(200).json({ message: "Submit Answers - Not Implemented Yet" });
-};
-
 const submitRevealLetter = (req, res) => {
     let answer = req.body.answer;
     try {
@@ -115,6 +98,10 @@ const submitRevealLetter = (req, res) => {
     
    
 };
+
+const updateXP = (req, res) => {
+
+}
 
 const submitRemoveLetter = (req, res) => {
     console.log("removing");
@@ -138,7 +125,7 @@ const submitRemoveLetter = (req, res) => {
 
 module.exports = { 
     index, 
-    verifyAnswer, 
+    updateXP, 
     revealLetter : submitRevealLetter,
     removeLetter : submitRemoveLetter, 
 };

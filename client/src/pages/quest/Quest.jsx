@@ -38,6 +38,7 @@ function Quest() {
   let currLetter = 0;
   let hintIndex = -1;
   let removedLetter = false;
+  let attempts = 0;
 
   return (
     <BGContainer difficulty={quest.difficulty}>
@@ -131,13 +132,31 @@ function Quest() {
             }
              />
               <SubmitBtn onSubmitClick={ () => {
-                let childButtons = document.getElementById('letterset').childNodes();
-                console.log(childButtons);
-
-
-                
+                let childDivs = document.getElementById('answerHolder').childNodes;
+                let word = "";
+                childDivs.forEach(function(divChild) {
+                  let h2Node = divChild.childNodes[0];
+                    if (h2Node.innerHTML.trim() == "") {
+                      //Incomplete submit
+                    } else {
+                      word += h2Node.innerHTML.trim();
+                    }
+                });
+                if (quest.answer.toUpperCase() == word) {
+                    console.log("Correct!");
+                  
+                    // TODO: PLUS XP
+                    window.location.reload()
+                    attempts =0;
+                } else {
+                attempts++;
+                if (attempts == 3) {
+                    // TODO: MINUS XP
+                }
+                }
               }}
               />
+
             </div>
           </div>
         </div>
