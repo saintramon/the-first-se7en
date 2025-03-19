@@ -68,12 +68,10 @@ function Quest() {
                     let specAnsHolderH2 = document.getElementById("h2-" +currLetter);
                     selectedIndex.disabled = true;
                     currLetter++;
-                    console.log(specAnsHolderH2);
+                    
                     specAnsHolderH2.innerHTML = letter;
 
                   }
-                  //console.log(document.getElementById("button" +id));
-               //   console.log(document.getElementById(id));
                 }} />
               </div>
             </div>
@@ -105,7 +103,6 @@ function Quest() {
               />
               <RemoveBtn onRemoveClick={ () => {
                 if (!removedLetter) {
-                console.log('clicked');
                 fetch('http://localhost:8080/api/quest/removeLetter', {
                   method: "POST",
                   headers: {
@@ -134,14 +131,29 @@ function Quest() {
               <SubmitBtn onSubmitClick={ () => {
                 let childDivs = document.getElementById('answerHolder').childNodes;
                 let word = "";
-                childDivs.forEach(function(divChild) {
-                  let h2Node = divChild.childNodes[0];
-                    if (h2Node.innerHTML.trim() == "") {
-                      //Incomplete submit
-                    } else {
-                      word += h2Node.innerHTML.trim();
-                    }
-                });
+                if (childDivs.length ==2) {
+                  childDivs.forEach(function(childChildDiv) {
+                    let childChildDivNodes = childChildDiv.childNodes
+                    childChildDivNodes.forEach(function(divChild) {
+                      let h2Node = divChild.childNodes[0];
+                      if (h2Node.innerHTML.trim() != "") {
+                        word += h2Node.innerHTML.trim();
+                      }
+
+                    })
+                    if (!word.includes("_")) 
+                      word += "_"
+                  })
+
+                } else {
+                  childDivs.forEach(function(divChild) {
+                    let h2Node = divChild.childNodes[0];
+                      if (h2Node.innerHTML.trim() != "") {
+                        word += h2Node.innerHTML.trim();
+                      }
+                  });
+                }
+
                 if (quest.answer.toUpperCase() == word) {
                     console.log("Correct!");
                   

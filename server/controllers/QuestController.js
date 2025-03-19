@@ -23,29 +23,16 @@ const generateLetterSet = (answer) => {
 
 
 const removeLetter = (word, letters) => {
-    word = word.toUpperCase().split("");
+    wordSplit = word.toUpperCase().split("");
    // let wordSplit = word.toUpperCase().split("");
 
 
     let randomIndex =  Math.floor(Math.random() * (letters.length) + 0);
-    let condition = letters.includes(word[randomIndex]);
-    console.log(randomIndex)
-    let randomIndex2 = randomIndex;
-    if (condition) {
-        while (randomIndex2 != word.length-1) {
-            randomIndex2 +=1;
-            if (!condition) {
-                return randomIndex2;
-            }
-        } while (randomIndex != 0) {
-            randomIndex -=1;
-            if (!condition) {
-                return randomIndex;
-            }
-        }
-    } else {
+    if (!wordSplit.includes(letters[randomIndex])) {
         return randomIndex;
-    }   
+    } else {
+        return removeLetter(word, letters);
+    }
 }
 
 const revealLetter = (word) => {
@@ -53,8 +40,14 @@ const revealLetter = (word) => {
     let letterInfo = [word.split("")[index], index];
     if (letterInfo[0]== '_') {
         revealLetter(word);
+    } else {
+        if (word.includes("_")) {
+            letterInfo[1] +=1;
+        } else {
+            return letterInfo;
+
+        }
     }
-    return letterInfo;
 }
 
 const index = async (req, res) => {
@@ -109,7 +102,7 @@ const submitRemoveLetter = (req, res) => {
     let word = req.body.answer;
     let letterlist = req.body.letterList;
     try {
-        console.log('removing x2')
+        console.log(letterlist)
         let toRemove = removeLetter(word, letterlist);
         console.log("to remove: ", toRemove)
         console.log(toRemove);
