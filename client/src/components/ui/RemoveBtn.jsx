@@ -6,7 +6,7 @@ function RemoveBtn() {
   return (
 <div>
         <button class = "btn">
-       <img src={erase} alt="Previous"/> </button>
+       <img src={erase} alt="Remove"/> </button>
 </div>
   )
 }

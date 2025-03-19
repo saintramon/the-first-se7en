@@ -6,7 +6,7 @@ function RevealBtn() {
   return (
     <div>
         <button class = "btn">
-       <img src={lightbulb} alt="Previous"/> 
+       <img src={lightbulb} alt="Reveal"/> 
        </button>
     </div>
   )

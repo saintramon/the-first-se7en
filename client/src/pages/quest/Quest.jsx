@@ -5,6 +5,7 @@ import QuestDifficulty from '../../components/ui/QuestDifficulty';
 import QuestImageHolder from '../../components/ui/QuestImageHolder';
 import AnswerHolder from '../../components/ui/AnswerHolder';
 import LetterSet from '../../components/ui/LetterSet';
+import Lives from "../../components/ui/Lives"; 
 import RevealBtn from '../../components/ui/RevealBtn';
 import RemoveBtn from '../../components/ui/RemoveBtn';
 import SubmitBtn from '../../components/ui/SubmitBtn';
@@ -55,6 +56,10 @@ function Quest() {
               <div className="letter-set-container">
                 <LetterSet letters={quest.letterSet} onLetterClick={() => {}} />
               </div>
+            </div>
+
+            <div className="lives-container">
+            <Lives attemptsLeft={quest.playerAttempts} />
             </div>
 
             <div className="action-buttons">
