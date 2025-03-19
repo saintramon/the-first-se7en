@@ -3,7 +3,7 @@ import "./letter_set.css";
 
 function LetterSet({ letters, onLetterClick }) {
 	return (
-		<div className="letter-set">
+		<div className="letter-set" id = 'letterset'>
 			{letters.map((letter, index) => (
 				<button
 					id = {"button" + index}

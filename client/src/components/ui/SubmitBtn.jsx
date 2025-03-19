@@ -1,10 +1,13 @@
 import React from 'react'
 import './Submit.css'
 
-function SubmitBtn() {
+function SubmitBtn( { onSubmitClick }) {
   return (
     <div>
-       <button>SUBMIT</button>
+       <button
+          id = 'btn-submit'
+          onClick={ () => onSubmitClick() }
+       >SUBMIT</button>
     </div>
   )
 }

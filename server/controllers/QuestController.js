@@ -23,21 +23,29 @@ const generateLetterSet = (answer) => {
 
 
 const removeLetter = (word, letters) => {
-    let letterSet = letters.split("");
-    let wordSplit = word.split("");
+    word = word.toUpperCase().split("");
+   // let wordSplit = word.toUpperCase().split("");
 
-    let randomIndex = Math.getRandomIndex(0, 20);
-    let letterToRemove = letterSet[randomIndex];
 
-    let currLength = wordSplit.length;
-    for (let x = 0; x < wordSplit.length; x++) {
-        if (wordSplit[y] == letterSet[x]) {
-            wordSplit.remove(wordSplit[y]); 
-            break;
+    let randomIndex =  Math.floor(Math.random() * (letters.length) + 0);
+    let condition = letters.includes(word[randomIndex]);
+    console.log(randomIndex)
+    let randomIndex2 = randomIndex;
+    if (condition) {
+        while (randomIndex2 != word.length-1) {
+            randomIndex2 +=1;
+            if (!condition) {
+                return randomIndex2;
+            }
+        } while (randomIndex != 0) {
+            randomIndex -=1;
+            if (!condition) {
+                return randomIndex;
+            }
         }
-    }
-    if (wordSplit.length != currLength) return letterToRemove;
-    else return removeLetter(word, letters);
+    } else {
+        return randomIndex;
+    }   
 }
 
 const revealLetter = (word) => {
@@ -94,25 +102,38 @@ const verifyAnswer = (req, res) => {
 
 const submitRevealLetter = (req, res) => {
     let answer = req.body.answer;
-   // try {
+    try {
         let revealedLetterIndex = revealLetter(answer);
-        console.log("Revealed letter: ", revealedLetterIndex);
-        console.log(revealedLetterIndex[0]);
         res.status(200).json({ 
             message: "Letter Revealed",
             reveleadLetter : revealedLetterIndex[0].toUpperCase(),
             index : revealedLetterIndex[1]
         }); 
-    //} catch (Exception) {
+    } catch (Exception) {
        // res.status(500).json( { message: "Error revealing letter."})
-    //}
+    }
     
    
 };
 
 const submitRemoveLetter = (req, res) => {
-  //  removeLetter(req.word, req.letterSet);
-    res.status(200).json({ message: "Remove Letter - Not Implemented Yet" });
+    console.log("removing");
+    
+    let word = req.body.answer;
+    let letterlist = req.body.letterList;
+    try {
+        console.log('removing x2')
+        let toRemove = removeLetter(word, letterlist);
+        console.log("to remove: ", toRemove)
+        console.log(toRemove);
+        res.status(200).json({
+            message: "Letter removed",
+            index: toRemove
+        })
+    } catch {
+        res.status(500).json({ message: "Failed removing letter"})
+    }
+        
 };
 
 module.exports = { 

@@ -15,9 +15,6 @@ function Quest() {
   const [quest, setQuest] = useState(null);
   const [error, setError] = useState(null);
 
-  const [revealLetter, setRevealLetter] = useState(null);
-  const [err, setErr] = useState(null);
-
   useEffect(() => {
     fetch('http://localhost:8080/api/quest')
       .then((res) => res.json())
@@ -40,6 +37,7 @@ function Quest() {
 
   let currLetter = 0;
   let hintIndex = -1;
+  let removedLetter = false;
 
   return (
     <BGContainer difficulty={quest.difficulty}>
@@ -99,13 +97,47 @@ function Quest() {
                       }
                     })
                     .catch((err) => {
-                      setError("Failed to load quest");
+                      setError(err);
                     });
                   }}
                 }
               />
-              <RemoveBtn />
-              <SubmitBtn />
+              <RemoveBtn onRemoveClick={ () => {
+                if (!removedLetter) {
+                console.log('clicked');
+                fetch('http://localhost:8080/api/quest/removeLetter', {
+                  method: "POST",
+                  headers: {
+                    'Content-type': 'application/json',
+                  },
+                  body: JSON.stringify( {
+                    answer: quest.answer,
+                    letterList: quest.letterSet
+                  })
+                }).then((res) => res.json())
+                .then((data) => {
+                  if (data?.error) {
+                    setError(data.error);
+                  } else {
+                    let selectedIndex = document.getElementById("button" +data.index);
+                    selectedIndex.disabled = true;
+                    removedLetter = true;
+                  }
+                })
+                .catch((err) => {
+                  setError(err);
+                });
+              }}
+            }
+             />
+              <SubmitBtn onSubmitClick={ () => {
+                let childButtons = document.getElementById('letterset').childNodes();
+                console.log(childButtons);
+
+
+                
+              }}
+              />
             </div>
           </div>
         </div>
