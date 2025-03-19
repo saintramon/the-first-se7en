@@ -1,11 +1,8 @@
-const {
-    validateUser : dbValidateUser,
-    getPlayerXP : dbGetPlayerXP,
-} = require('./GameQueries');
+const { validateUser, getPlayerXP } = require('./GameQueries'); 
 
-function validateUser(username, password) {
+async function dbValidateUser(username, password) {
     return new Promise((resolve, reject) => {
-        dbValidateUser(username, password, (err, results) => {
+        validateUser(username, password, (err, results) => {
             if (err) {
                 return reject(err);
             } 
@@ -17,9 +14,9 @@ function validateUser(username, password) {
     });
 };
 
-function getPlayerXP(playerID) {
+async function dbGetPlayerXP(playerID) {
     return new Promise((resolve, reject) => {
-        dbGetPlayerXP(playerID, (err, results) => {
+        getPlayerXP(playerID, (err, results) => {
             if (err) {
                 return reject(err);
             }
@@ -32,5 +29,6 @@ function getPlayerXP(playerID) {
 };
 
 module.exports = {
-    validateUser, getPlayerXP 
+    dbValidateUser, 
+    dbGetPlayerXP, 
 }

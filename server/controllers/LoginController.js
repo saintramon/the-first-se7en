@@ -14,18 +14,18 @@ const index = (req, res) => {
 
 const validateUser = async (req, res) => {
     try {
-        const {username, password } = req.body;
+        const { username, password } = req.body;
 
         if (!username || !password) {
             return res.status(400).json({error: "User not found"});
         }
 
-        const userID = await model.validateUser(username, password);
+        const userID = await model.dbValidateUser(username, password);
         if (!userID) {
             return res.status(401).json({ error: "Invalid credentials" });
         }
 
-        const currXP = await model.getPlayerXP(userID);
+        const currXP = await model.dbGetPlayerXP(userID);
         if (currXP === null || currXP === undefined) {
             return res.status(400).json({error: "Invalid userID"});
         }
@@ -33,17 +33,17 @@ const validateUser = async (req, res) => {
         req.session.userID = userID;
         req.session.currXP = currXP;
 
-        res.status(200).json({
+        return res.status(200).json({
             message: "Login successful",
             user_id: req.session.userID,
             xp: req.session.currXP,
         });
     } catch (error) {
         console.error(error);
-        res.status(500).json(
+        return res.status(500).json(
             {error: "Error logging in. Please try again."}
         );
-    }
+e   }
 }
 
 module.exports = {
