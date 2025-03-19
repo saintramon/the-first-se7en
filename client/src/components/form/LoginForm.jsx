@@ -21,7 +21,7 @@ function LoginForm() {
                 password       
             });
 
-            // TODO: implementation of receiving
+            localStorage.setItem('user', JSON.stringify(response.data)); // saves session in localStorage
 
             navigate('/home');
         } catch (err) {
