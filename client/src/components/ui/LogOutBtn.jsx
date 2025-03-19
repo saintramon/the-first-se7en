@@ -1,14 +1,20 @@
-import React from 'react'
-import './LogOut.css'
-import logoutImg from '../../assets/bg-img/logout_icon.png'
+import React, { useState } from 'react';
+import './LogOut.css';
+import logoutBtn from '../../assets/icon/logout-icon-white.png';
+import logoutHover from '../../assets/icon/logout-icon-orange.png';
 
 function LogOutBtn() {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-    <div>
-        <button class = "btn">
-        <img src={logoutImg} alt="Log out Button"/> </button>
-    </div>
-  )
+    <button
+      className="logout-btn"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <img src={isHovered ? logoutHover : logoutBtn} alt="Log out" />
+    </button>
+  );
 }
 
-export default LogOutBtn
+export default LogOutBtn;
