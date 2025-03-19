@@ -37,14 +37,27 @@ function App() {
   }, []);
 
   return (
+    // FOR PRODUCTIO
+    // <Router>
+    //   <Routes>
+    //     <Route path="/" element={<Home />} />
+    //     <Route path="/login" element={user ? <Navigate to="/home" /> : <Login />} />
+    //     <Route path="/signup" element={<Signup />} />
+    //     <Route path="/instructions" element={user ? <Instructions /> : <Navigate to="/login"/>} />
+    //     <Route path="/quest" element={user ? <Quest /> : <Navigate to="/login"/>} />
+    //     <Route path="/bonus_quest" element={user ? <BonusQuest /> : <Navigate to="/login"/>} />
+    //   </Routes>
+    // </Router>
+    
+    // UNCOMMENT FOR DEV / TESTING
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={user ? <Navigate to="/home" /> : <Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/instructions" element={user ? <Instructions /> : <Navigate to="/login"/>} />
-        <Route path="/quest" element={user ? <Quest /> : <Navigate to="/login"/>} />
-        <Route path="/bonus_quest" element={user ? <BonusQuest /> : <Navigate to="/login"/>} />
+        <Route path="/instructions" element={<Instructions /> } />
+        <Route path="/quest" element={<Quest /> } />
+        <Route path="/bonus_quest" element={<BonusQuest /> } />
       </Routes>
     </Router> 
   );
