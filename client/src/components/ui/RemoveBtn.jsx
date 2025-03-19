@@ -5,7 +5,7 @@ import erase from '../../assets/icon/erase.png'
 function RemoveBtn() {
   return (
 <div>
-        <button class = "btn">
+        <button className = "btn">
        <img src={erase} alt="Previous"/> </button>
 </div>
   )

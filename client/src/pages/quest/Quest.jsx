@@ -9,10 +9,14 @@ import RevealBtn from '../../components/ui/RevealBtn';
 import RemoveBtn from '../../components/ui/RemoveBtn';
 import SubmitBtn from '../../components/ui/SubmitBtn';
 import './quest.css';
+import RevealLetter from './RevealLetter';
 
 function Quest() {
   const [quest, setQuest] = useState(null);
   const [error, setError] = useState(null);
+
+  const [revealLetter, setRevealLetter] = useState(null);
+  const [err, setErr] = useState(null);
 
   useEffect(() => {
     fetch('http://localhost:8080/api/quest')
@@ -35,6 +39,7 @@ function Quest() {
   if (!quest) return <div>Loading...</div>;
 
   let currLetter = 0;
+  let hintIndex = -1;
 
   return (
     <BGContainer difficulty={quest.difficulty}>
@@ -57,15 +62,15 @@ function Quest() {
               <div className="letter-set-container">
                 <LetterSet letters={quest.letterSet} onLetterClick={(id, letter) => {
                   if (currLetter != quest.answer.length) {
-                  console.log(id + letter);
-                  let selectedIndex = document.getElementById("button" +id);
-        
-                  let specAnsHolderH2 = document.getElementById("h2-" +currLetter);
-                  let specAnsHolder = document.getElementById("div-" +currLetter);
-                  selectedIndex.disabled = true;
-                  currLetter++;
-                  console.log(specAnsHolderH2);
-                  specAnsHolderH2.innerHTML = letter;
+                    if (currLetter == hintIndex) {
+                      currLetter++;
+                    }
+                    let selectedIndex = document.getElementById("button" +id);
+                    let specAnsHolderH2 = document.getElementById("h2-" +currLetter);
+                    selectedIndex.disabled = true;
+                    currLetter++;
+                    console.log(specAnsHolderH2);
+                    specAnsHolderH2.innerHTML = letter;
 
                   }
                   //console.log(document.getElementById("button" +id));
@@ -75,7 +80,30 @@ function Quest() {
             </div>
 
             <div className="action-buttons">
-              <RevealBtn />
+              <RevealBtn onRevealClick={ () => {
+                if(hintIndex == -1) {
+                    fetch('http://localhost:8080/api/quest/revealLetter', {
+                      method: "POST",
+                      headers: {
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify( {answer: quest.answer})
+                    }) .then((res) => res.json())
+                    .then((data) => {
+                      if (data?.error) {
+                        setError(data.error);
+                      } else {
+                        let hintHolderH2 = document.getElementById("h2-" + data.index);
+                        hintHolderH2.innerHTML = data.reveleadLetter;
+                        hintIndex = data.index;
+                      }
+                    })
+                    .catch((err) => {
+                      setError("Failed to load quest");
+                    });
+                  }}
+                }
+              />
               <RemoveBtn />
               <SubmitBtn />
             </div>

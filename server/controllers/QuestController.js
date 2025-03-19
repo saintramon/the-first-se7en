@@ -1,3 +1,4 @@
+const { response } = require('express');
 const model = require('../models/QuestModel');
 
 const generateLetterSet = (answer) => {
@@ -40,8 +41,12 @@ const removeLetter = (word, letters) => {
 }
 
 const revealLetter = (word) => {
-    index = Math.getRandomIndex(0, word.length);
-    return letterInfo[word.split("")[index], index];
+    let index =  Math.floor(Math.random() * (word.length - 0) + 0);
+    let letterInfo = [word.split("")[index], index];
+    if (letterInfo[0]== '_') {
+        revealLetter(word);
+    }
+    return letterInfo;
 }
 
 const index = async (req, res) => {
@@ -50,7 +55,6 @@ const index = async (req, res) => {
         const questInfoArray = await model.getQuestInformation(questID);
 
         if (!questInfoArray || questInfoArray.length === 0) {
-            return res.status(404).json( {error : "Message"});
             return res.status(404).json({ error: "Quest not found" });
         }
 
@@ -89,25 +93,31 @@ const verifyAnswer = (req, res) => {
 };
 
 const submitRevealLetter = (req, res) => {
-    try {
-        let revealedLetterIndex = revealLetter(req.word);
-        res.send( { reveleadLetter : revealedLetterIndex[0],
+    let answer = req.body.answer;
+   // try {
+        let revealedLetterIndex = revealLetter(answer);
+        console.log("Revealed letter: ", revealedLetterIndex);
+        console.log(revealedLetterIndex[0]);
+        res.status(200).json({ 
+            message: "Letter Revealed",
+            reveleadLetter : revealedLetterIndex[0].toUpperCase(),
             index : revealedLetterIndex[1]
         }); 
-    } catch (Exception) {
-        res.status(500).json( { message: "Error revealing letter."})
-    }
-   // res.status(200).json({ message: "Reveal Letter - Not Implemented Yet" });
+    //} catch (Exception) {
+       // res.status(500).json( { message: "Error revealing letter."})
+    //}
+    
+   
 };
 
 const submitRemoveLetter = (req, res) => {
-    removeLetter(req.word, req.letterSet);
+  //  removeLetter(req.word, req.letterSet);
     res.status(200).json({ message: "Remove Letter - Not Implemented Yet" });
 };
 
 module.exports = { 
     index, 
     verifyAnswer, 
-    revealLetter : submitRemoveLetter, 
-    removeLetter : submitRevealLetter
+    revealLetter : submitRevealLetter,
+    removeLetter : submitRemoveLetter, 
 };

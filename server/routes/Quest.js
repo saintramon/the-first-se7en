@@ -11,7 +11,7 @@ router.get('/', QuestController.index);
 //router.post('/submit', QuestController.submitAnswers);
 
 // When someone wants to reveal a letter
-//router.post('/revealLetter', QuestController.revealLetter);
+router.post('/revealLetter', QuestController.revealLetter);
 
 // When someone wants to remove a letter
 //router.post('/removeLetter', QuestController.removeLetter);
