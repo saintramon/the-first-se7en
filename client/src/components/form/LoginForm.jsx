@@ -33,9 +33,8 @@ function LoginForm() {
     return (
     <Card className="login-card">
         <Card.Body>
-            <h2>Log In</h2>
-            <p>No account yet? <Link to="/signup" className="signup-link">Sign up </Link> and get 10 XP!</p>
-            {error && <p className="error-message">{error}</p>}               
+            <h2>Welcome Back</h2>
+            <p>No account yet? <Link to="/signup" className="signup-link">Sign up </Link> and get 10 XP!</p>               
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                     <Form.Control 
