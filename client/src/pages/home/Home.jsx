@@ -1,24 +1,27 @@
-import React from 'react';
-import NavbarHome from '../../components/navigation/NavbarHome';
-import PlayBtn from '../../components/buttons/PlayBtn';
-import HowtoBtn from '../../components/buttons/HowtoBtn';
-import "./home.css";
+import React from "react";
+import NavbarHome from "../../components/navigation/NavbarHome";
+import PlayBtn from "../../components/buttons/PlayBtn";
+import HowToBtn from "../../components/buttons/HowToBtn";
+import logo from "../../assets/icon/logo.png"; 
+import "../home.css";
 
 function Home() {
   return (
-  <div className="home-container">
+    <div className="home-container">
+      <div className="navbar-container">
+        <NavbarHome />
+      </div>
 
-    <div className="navbar-container">
-    <NavbarHome />
+      <div className="logo-container">
+        <img src={logo} alt="Litra2Code Logo" className="app-logo" />
+      </div>
+
+      <div className="button-container">
+        <PlayBtn />
+        <HowToBtn />
+      </div>
     </div>
-
-    <div className="main-container">
-      <PlayBtn />
-      <HowtoBtn />
-    </div>
-
-  </div>
-  )
+  );
 }
 
 export default Home;

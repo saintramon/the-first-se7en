@@ -1,13 +1,13 @@
 .home-container {
-  background:'../../assets/bg-img/auth-bg.png';
-  position: relative;
-  width: 100%;
-  height: 100%;
+  background: url("../../assets/bg-img/auth-bg.png") no-repeat center center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #c5d5e4;
+  position: relative;
   overflow: hidden;
 }
 
@@ -17,11 +17,26 @@
   width: 100%;
 }
 
-.main-container {
-  position: relative;
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.home-logo {
+  width: 1000px;
+  height: auto;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 50px; 
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
-  z-index: 10;
+  gap: 10px;
 }

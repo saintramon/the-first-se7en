@@ -1,32 +1,37 @@
 @import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@800&display=swap');
 
-button {
+.play-btn {
     background: linear-gradient(to bottom, #4B5AE4, #4B5AE4);
     font-family: 'Sniglet', sans-serif;
-    font-size: 60px;
+    font-size: 50px;
     font-weight: bold;
     color: white;
     border: none;
-    width: 280px;
-    height: 90px;
-    padding: 10px;
-    border-radius: 35px;
+    width: 220px;
+    height: 70px;
+    padding: 0; 
+    border-radius: 45px;
     text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 8px 0px #2B2E66, 
                 0px 12px 16px rgba(0, 0, 0, 0.4), 
                 inset 0px 4px 8px rgba(255, 255, 255, 0.2);
     cursor: pointer;
     transition: all 0.15s ease-in-out;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 1; 
 }
 
-button:active {
+.play-btn:active {
     box-shadow: 0px 4px 0px #2B2E66, 
                 0px 6px 8px rgba(0, 0, 0, 0.3), 
-                inset 0px 4px 8px rgba(0, 0, 0, 0.5);
+                inset 0px 4px 8px rgba(255, 255, 0.5);
     transform: translateY(4px);
 }
 
-button:hover {
+.play-btn:hover {
     background: linear-gradient(to bottom, #4B5AE4, #263580);
 }
-
