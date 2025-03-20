@@ -1,7 +1,7 @@
 import React from 'react'
 import prev from '../../assets/icon/prev.png'
 import next from '../../assets/icon/next.png'
-import './arrows.css'
+import '../ui/arrows.css'
 
 function ArrowsBtn() {
   return (

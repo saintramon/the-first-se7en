@@ -1,5 +1,5 @@
 import React from 'react'
-import './how_to_play.css'
+import '../ui/how_to_play.css'
 
 function HowToBtn() {
   return (
