@@ -1,6 +1,6 @@
 import React from 'react'
-import NavbarHome from '../../components/ui/NavbarHome'
-import ArrowsBtn from '../../components/ui/ArrowsBtn'
+import NavbarHome from '../../components/navigation/NavbarHome'
+import ArrowsBtn from '../../components/buttons/ArrowsBtn'
 import "./instructions.css";
 
 function Instructions() {
