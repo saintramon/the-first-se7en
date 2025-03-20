@@ -16,7 +16,7 @@ function LoginForm() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('/api/login/', {
+            const response = await axios.post('/api/login', {
                 username,
                 password       
             });
@@ -56,6 +56,7 @@ function LoginForm() {
                 </Form.Group>
                 <LoginBtn type="submit" />
             </Form>
+            {error && <p className="error-text">{error}</p>}        
         </Card.Body>
     </Card>
     );
