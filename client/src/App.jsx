@@ -21,7 +21,7 @@ function App() {
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
-  })
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
