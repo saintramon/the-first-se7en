@@ -1,7 +1,7 @@
 import React from 'react';
-import NavbarHome from '../../components/ui/NavbarHome';
-import PlayBtn from '../../components/ui/PlayBtn';
-import HowtoBtn from '../../components/ui/HowtoBtn';
+import NavbarHome from '../../components/navigation/NavbarHome';
+import PlayBtn from '../../components/buttons/PlayBtn';
+import HowtoBtn from '../../components/buttons/HowtoBtn';
 import "./home.css";
 
 function Home() {

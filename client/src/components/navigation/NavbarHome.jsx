@@ -1,9 +1,9 @@
 import React from "react";
-import GithubLogo from "./GithubLogo";
-import Logo from "./Logo";
-import LogOutBtn from "./LogOutBtn";
-import XPbar from "./XPBar";
-import "./navbar_home.css";
+import GithubLogo from "../ui/GithubLogo";
+import Logo from "../ui/Logo";
+import LogOutBtn from "../navigation/LogOutBtn";
+import XPbar from "../navigation/XPBar";
+import "../styles/navbar_home.css";
 
 const NavbarHome = () => {
   return (
@@ -22,4 +22,4 @@ const NavbarHome = () => {
   );
 };
 
-export default Navbar;
+export default NavbarHome;
