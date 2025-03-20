@@ -3,7 +3,7 @@ import BonusQuestForm from '../../components/form/BonusQuestForm';
 import QuestDifficulty from '../../components/ui/QuestDifficulty';
 import Navbar from '../../components/ui/Navbar';
 import BGContainer from '../../components/ui/BGContainer';
-import XPBar from '../../components/ui/XPbar';
+import XPBar from '../../components/ui/XPBar';
 
 function BonusQuest() {
   return (
