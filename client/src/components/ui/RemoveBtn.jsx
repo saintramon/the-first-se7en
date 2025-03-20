@@ -9,8 +9,8 @@ function RemoveBtn({ onRemoveClick }) {
           className="btn" 
           id = 'btn-reveal'
           onClick={ () => onRemoveClick() }
-        >
-       <img src={erase} alt="Previous"/> </button>
+        >   
+       <img src={erase} alt="Remove"/> </button>
 </div>
   )
 }

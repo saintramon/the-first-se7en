@@ -9,7 +9,7 @@ function RevealBtn({ onRevealClick }) {
           className="btn" 
           id = 'btn-reveal'
           onClick={ () => onRevealClick() }>
-       <img src={lightbulb} alt="Previous"/> 
+       <img src={lightbulb} alt="Reveal"/> 
        </button>
     </div>
   )

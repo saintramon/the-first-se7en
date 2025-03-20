@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import axios from '../../../axios.config';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
@@ -16,12 +16,12 @@ function LoginForm() {
         e.preventDefault();
 
         try {
-            const response = await axios.post('/api/login', {
+            const response = await axios.post('/api/login/', {
                 username,
                 password       
             });
 
-            // TODO: implementation of receiving
+            localStorage.setItem('user', JSON.stringify(response.data)); // saves session in localStorage
 
             navigate('/home');
         } catch (err) {
@@ -34,7 +34,8 @@ function LoginForm() {
     <Card className="login-card">
         <Card.Body>
             <h2>Log In</h2>
-            <p>No account yet? <Link to="/signup" className="signup-link">Sign up </Link> and get 10 XP!</p>               
+            <p>No account yet? <Link to="/signup" className="signup-link">Sign up </Link> and get 10 XP!</p>
+            {error && <p className="error-message">{error}</p>}               
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3">
                     <Form.Control 
