@@ -1,6 +1,6 @@
 const {
     getBonusQuestAns : getBonusQuestAns
-} = require('./GameQueries');
+} = require('../services/GameQueries');
 
     // Validates whether the answer submitted is correct
     function verifyAnswer() {

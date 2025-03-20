@@ -7,12 +7,12 @@ const session = require('express-session');
 const PORT = 8080;
 
 /* Routers */
-const signupRouter = require('./routes/Signup');
-const loginRouter = require('./routes/Login');
-const homeRouter = require('./routes/Home');
-const instructionsRouter = require('./routes/Instructions');
-const questRouter = require('./routes/Quest');
-const bonusQuestRouter = require('./routes/BonusQuest');
+const signupRouter = require('./routes/SignupRoutes');
+const loginRouter = require('./routes/LoginRoutes');
+const homeRouter = require('./routes/HomeRoutes');
+const instructionsRouter = require('./routes/InstructionsRoutes');
+const questRouter = require('./routes/QuestRoutes');
+const bonusQuestRouter = require('./routes/BonusQuestRoutes');
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -26,7 +26,7 @@ app.use(cors({
     origin: 'http://localhost:3000', // send data to frontend
     credentials: true,
     methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 app.use(express.json());
@@ -71,4 +71,3 @@ app.get("/api/", (req, res) => {
 app.listen(PORT, () => {
     console.log(`RUNNING SERVER AT http://localhost:${PORT}`);
 });
-
