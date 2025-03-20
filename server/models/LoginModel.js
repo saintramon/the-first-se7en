@@ -1,4 +1,4 @@
-const { validateUser, getPlayerXP } = require('./GameQueries'); 
+const { validateUser, getPlayerXP } = require('../services/GameQueries'); 
 
 async function dbValidateUser(username, password) {
     return new Promise((resolve, reject) => {

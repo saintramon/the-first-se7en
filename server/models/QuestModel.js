@@ -1,7 +1,7 @@
 const {
     getQuestInfo : getQuestInfo,
     getQuestAnswer : getQuestAnswer,
-} = require('./GameQueries')
+} = require('../services/GameQueries')
 
 function processQuestInfo(results) {
     if (!Array.isArray(results)) {

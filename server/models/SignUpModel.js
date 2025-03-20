@@ -1,4 +1,4 @@
-const conn = require("../config/Connection");
+const conn = require("../config/Database");
 
 async function handleSignUp(username, password, xp = 10) {
     return new Promise((resolve, reject) => {

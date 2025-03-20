@@ -3,8 +3,8 @@ import axios from 'axios';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
-import SignupBtn from '../ui/SignupBtn';
-import './forms.css';
+import SignupBtn from '../buttons/SignupBtn';
+import '../styles/forms.css';
 
 function SignupForm() {
     const [username, setUsername] = useState('');

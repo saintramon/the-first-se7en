@@ -2,7 +2,7 @@ import React from "react";
 import easyBg from "../../assets/bg-img/easy-bg.png";
 import mediumBg from "../../assets/bg-img/medium-bg.png";
 import hardBg from "../../assets/bg-img/hard-bg.png";
-import "./bg_container.css";
+import "../styles/bg_container.css";
 
 const difficultyBackgrounds = {
 	easy: easyBg,

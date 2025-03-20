@@ -3,8 +3,8 @@ import axios from '../../../axios.config';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
-import LoginBtn from '../ui/LoginBtn';
-import './forms.css';
+import LoginBtn from '../buttons/LoginBtn';
+import '../styles/forms.css';
 
 function LoginForm() {
     const [username, setUsername] = useState('');

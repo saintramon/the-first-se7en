@@ -1,12 +1,12 @@
 import React from 'react'
-import './Reveal.css'
+import '../styles/Reveal.css'
 import lightbulb from '../../assets/icon/light_bulb.png'
 
 function RevealBtn({ onRevealClick }) {
   return (
     <div>
         <button 
-          className="btn" 
+          className="reveal-btn" 
           id = 'btn-reveal'
           onClick={ () => onRevealClick() }>
        <img src={lightbulb} alt="Reveal"/> 

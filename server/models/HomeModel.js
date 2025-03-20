@@ -1,7 +1,7 @@
 const {
     getPlayerXP : getPlayerXP
 
-} = require('./GameQueries')
+} = require('../services/GameQueries')
 
 function extractPlayerXP() {
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import './continue.css'
+import '../styles/continue.css'
 
 function ContinueBtn() {
   return (

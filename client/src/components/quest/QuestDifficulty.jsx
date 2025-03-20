@@ -1,5 +1,5 @@
 import React from 'react';
-import "./quest_difficulty.css";
+import "../styles/quest_difficulty.css";
 
 function QuestDifficulty({ level }) {
   return (

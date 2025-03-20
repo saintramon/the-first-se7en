@@ -1,5 +1,5 @@
 import React from 'react'
-import './close.css'
+import '../styles/close.css'
 import close from '../../assets/icon/close.png'
 
 function CloseBtn() {

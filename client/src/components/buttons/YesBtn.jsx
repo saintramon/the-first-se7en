@@ -1,5 +1,5 @@
 import React from 'react'
-import './yes.css'
+import '../styles/yes.css'
 
 function YesBtn() {
   return (
