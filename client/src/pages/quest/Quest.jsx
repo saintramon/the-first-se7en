@@ -1,22 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import BGContainer from '../../components/ui/BGContainer';
-import Navbar from '../../components/ui/Navbar';
-import QuestDifficulty from '../../components/ui/QuestDifficulty';
+import Navbar from '../../components/navigation/Navbar';
+import QuestDifficulty from '../../components/quest/QuestDifficulty';
 import QuestImageHolder from '../../components/ui/QuestImageHolder';
-import AnswerHolder from '../../components/ui/AnswerHolder';
-import LetterSet from '../../components/ui/LetterSet';
-import Lives from "../../components/ui/Lives"; 
-import RevealBtn from '../../components/ui/RevealBtn';
+import AnswerHolder from '../../components/quest/AnswerHolder';
+import LetterSet from '../../components/quest/LetterSet';
+import Lives from "../../components/quest/Lives"; 
+import RevealBtn from '../../components/quest/RevealBtn';
 import RemoveBtn from '../../components/ui/RemoveBtn';
 import SubmitBtn from '../../components/ui/SubmitBtn';
 import './quest.css';
-import RevealLetter from './RevealLetter';
+import axios from '../../../axios.config';
 
 function Quest() {
   const [quest, setQuest] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const quest = await axios.get('/api/quest');
+
+
+
     fetch('http://localhost:8080/api/quest')
       .then((res) => res.json())
       .then((data) => {

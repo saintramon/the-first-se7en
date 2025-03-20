@@ -1,7 +1,7 @@
 import React from "react";
-import ReturnBtn from "./ReturnBtn";
-import Logo from "./Logo";
-import LogOutBtn from "./LogOutBtn";
+import ReturnBtn from "../ui/ReturnBtn";
+import Logo from "../ui/Logo";
+import LogOutBtn from "../ui/LogOutBtn";
 import XPbar from "./XPBar";
 import "./navbar.css";
 
