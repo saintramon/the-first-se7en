@@ -10,6 +10,7 @@ import RevealBtn from '../../components/ui/RevealBtn';
 import RemoveBtn from '../../components/ui/RemoveBtn';
 import SubmitBtn from '../../components/ui/SubmitBtn';
 import './quest.css';
+import RevealLetter from './RevealLetter';
 
 function Quest() {
   const [quest, setQuest] = useState(null);
@@ -35,6 +36,11 @@ function Quest() {
   if (error) return <div>Error: {error}</div>;
   if (!quest) return <div>Loading...</div>;
 
+  let currLetter = 0;
+  let hintIndex = -1;
+  let removedLetter = false;
+  let attempts = 0;
+
   return (
     <BGContainer difficulty={quest.difficulty}>
       <div className="quest-page">
@@ -54,7 +60,20 @@ function Quest() {
             
             <div className="letter-set-wrapper">
               <div className="letter-set-container">
-                <LetterSet letters={quest.letterSet} onLetterClick={() => {}} />
+                <LetterSet letters={quest.letterSet} onLetterClick={(id, letter) => {
+                  if (currLetter != quest.answer.length) {
+                    if (currLetter == hintIndex) {
+                      currLetter++;
+                    }
+                    let selectedIndex = document.getElementById("button" +id);
+                    let specAnsHolderH2 = document.getElementById("h2-" +currLetter);
+                    selectedIndex.disabled = true;
+                    currLetter++;
+                    
+                    specAnsHolderH2.innerHTML = letter;
+
+                  }
+                }} />
               </div>
             </div>
 
@@ -63,9 +82,98 @@ function Quest() {
             </div>
 
             <div className="action-buttons">
-              <RevealBtn />
-              <RemoveBtn />
-              <SubmitBtn />
+              <RevealBtn onRevealClick={ () => {
+                if(hintIndex == -1) {
+                    fetch('http://localhost:8080/api/quest/revealLetter', {
+                      method: "POST",
+                      headers: {
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify( {answer: quest.answer})
+                    }) .then((res) => res.json())
+                    .then((data) => {
+                      if (data?.error) {
+                        setError(data.error);
+                      } else {
+                        let hintHolderH2 = document.getElementById("h2-" + data.index);
+                        hintHolderH2.innerHTML = data.reveleadLetter;
+                        hintIndex = data.index;
+                      }
+                    })
+                    .catch((err) => {
+                      setError(err);
+                    });
+                  }}
+                }
+              />
+              <RemoveBtn onRemoveClick={ () => {
+                if (!removedLetter) {
+                fetch('http://localhost:8080/api/quest/removeLetter', {
+                  method: "POST",
+                  headers: {
+                    'Content-type': 'application/json',
+                  },
+                  body: JSON.stringify( {
+                    answer: quest.answer,
+                    letterList: quest.letterSet
+                  })
+                }).then((res) => res.json())
+                .then((data) => {
+                  if (data?.error) {
+                    setError(data.error);
+                  } else {
+                    let selectedIndex = document.getElementById("button" +data.index);
+                    selectedIndex.disabled = true;
+                    removedLetter = true;
+                  }
+                })
+                .catch((err) => {
+                  setError(err);
+                });
+              }}
+            }
+             />
+              <SubmitBtn onSubmitClick={ () => {
+                let childDivs = document.getElementById('answerHolder').childNodes;
+                let word = "";
+                if (childDivs.length ==2) {
+                  childDivs.forEach(function(childChildDiv) {
+                    let childChildDivNodes = childChildDiv.childNodes
+                    childChildDivNodes.forEach(function(divChild) {
+                      let h2Node = divChild.childNodes[0];
+                      if (h2Node.innerHTML.trim() != "") {
+                        word += h2Node.innerHTML.trim();
+                      }
+
+                    })
+                    if (!word.includes("_")) 
+                      word += "_"
+                  })
+
+                } else {
+                  childDivs.forEach(function(divChild) {
+                    let h2Node = divChild.childNodes[0];
+                      if (h2Node.innerHTML.trim() != "") {
+                        word += h2Node.innerHTML.trim();
+                      }
+                  });
+                }
+
+                if (quest.answer.toUpperCase() == word) {
+                    console.log("Correct!");
+                  
+                    // TODO: PLUS XP
+                    window.location.reload()
+                    attempts =0;
+                } else {
+                attempts++;
+                if (attempts == 3) {
+                    // TODO: MINUS XP
+                }
+                }
+              }}
+              />
+
             </div>
           </div>
         </div>

@@ -1,3 +1,4 @@
+const { response } = require('express');
 const model = require('../models/QuestModel');
 
 const generateLetterSet = (answer) => {
@@ -20,6 +21,34 @@ const generateLetterSet = (answer) => {
     return letterSet;
 };
 
+
+const removeLetter = (word, letters) => {
+    wordSplit = word.toUpperCase().split("");
+   // let wordSplit = word.toUpperCase().split("");
+
+
+    let randomIndex =  Math.floor(Math.random() * (letters.length) + 0);
+    if (!wordSplit.includes(letters[randomIndex])) {
+        return randomIndex;
+    } else {
+        return removeLetter(word, letters);
+    }
+}
+
+const revealLetter = (word) => {
+    let index =  Math.floor(Math.random() * (word.length - 0) + 0);
+    let letterInfo = [word.split("")[index], index];
+    if (letterInfo[0]== '_') {
+        revealLetter(word);
+    } else {
+        if (word.includes("_")) {
+            letterInfo[1] +=1;
+        } else {
+            return letterInfo;
+
+        }
+    }
+}
 
 const index = async (req, res) => {
     try {
@@ -47,17 +76,49 @@ const index = async (req, res) => {
     }
 };
 
-// Placeholder functions to prevent "undefined" error
-const submitAnswers = (req, res) => {
-    res.status(200).json({ message: "Submit Answers - Not Implemented Yet" });
+const submitRevealLetter = (req, res) => {
+    let answer = req.body.answer;
+    try {
+        let revealedLetterIndex = revealLetter(answer);
+        res.status(200).json({ 
+            message: "Letter Revealed",
+            reveleadLetter : revealedLetterIndex[0].toUpperCase(),
+            index : revealedLetterIndex[1]
+        }); 
+    } catch (Exception) {
+       // res.status(500).json( { message: "Error revealing letter."})
+    }
+    
+   
 };
 
-const revealLetter = (req, res) => {
-    res.status(200).json({ message: "Reveal Letter - Not Implemented Yet" });
+const updateXP = (req, res) => {
+
+}
+
+const submitRemoveLetter = (req, res) => {
+    console.log("removing");
+    
+    let word = req.body.answer;
+    let letterlist = req.body.letterList;
+    try {
+        console.log(letterlist)
+        let toRemove = removeLetter(word, letterlist);
+        console.log("to remove: ", toRemove)
+        console.log(toRemove);
+        res.status(200).json({
+            message: "Letter removed",
+            index: toRemove
+        })
+    } catch {
+        res.status(500).json({ message: "Failed removing letter"})
+    }
+        
 };
 
-const removeLetter = (req, res) => {
-    res.status(200).json({ message: "Remove Letter - Not Implemented Yet" });
+module.exports = { 
+    index, 
+    updateXP, 
+    revealLetter : submitRevealLetter,
+    removeLetter : submitRemoveLetter, 
 };
-
-module.exports = { index, submitAnswers, revealLetter, removeLetter };

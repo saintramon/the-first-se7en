@@ -7,8 +7,8 @@ const QuestController = require('../controllers/QuestController');
 // When someone enters the quest page
 router.get('/', QuestController.index);
 
-// When someone submits their answers
-router.post('/submit', QuestController.submitAnswers);
+// When someone wants to update their xp
+//router.post('/submit', QuestController.updateXP);
 
 // When someone wants to reveal a letter
 router.post('/revealLetter', QuestController.revealLetter);
