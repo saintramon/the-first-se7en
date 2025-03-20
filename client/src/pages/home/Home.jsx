@@ -3,7 +3,7 @@ import NavbarHome from "../../components/navigation/NavbarHome";
 import PlayBtn from "../../components/buttons/PlayBtn";
 import HowToBtn from "../../components/buttons/HowToBtn";
 import logo from "../../assets/icon/logo.png"; 
-import "../home.css";
+import "./home.css";
 
 function Home() {
   return (
