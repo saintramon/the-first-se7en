@@ -52,7 +52,7 @@ function Quest() {
 
         <div className="quest-content">
           <div className="quest-left">
-            <QuestImageHolder images={quest.images || []} />
+            <QuestImageHolder images={quest.images || []} answer={quest.answer}/>
           </div>
 
           <div className="quest-right">
