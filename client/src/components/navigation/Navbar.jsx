@@ -1,9 +1,9 @@
 import React from "react";
-import ReturnBtn from "../ui/ReturnBtn";
+import ReturnBtn from "../navigation//ReturnBtn";
 import Logo from "../ui/Logo";
-import LogOutBtn from "../ui/LogOutBtn";
+import LogOutBtn from "../navigation/LogOutBtn";
 import XPbar from "./XPBar";
-import "./navbar.css";
+import "../ui/navbar.css";
 
 const Navbar = () => {
   return (

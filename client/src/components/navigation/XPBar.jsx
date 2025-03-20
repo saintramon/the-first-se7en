@@ -1,5 +1,5 @@
 import React from 'react';
-import "./xp_bar.css";
+import "../ui/xp_bar.css";
 import xpStar from '../../assets/icon/xp_bar.png';
 
 function XPBar({ xp }) {
