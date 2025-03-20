@@ -1,0 +1,12 @@
+utility functions or helper files that are used across multiple components.
+
+Samples include:
+
+var doSomething = function(num) {
+ return num + 1;
+}
+
+exports.doSomething = doSomething;
+
+Basically, store here JavaScript files with functions that will update the state
+or look for a component.

@@ -1,0 +1,2 @@
+This will hold the files responsible for handling API communication and data fetching
+from the backend to the frontend, and vice versa.
