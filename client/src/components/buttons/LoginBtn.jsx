@@ -1,5 +1,5 @@
 import React from 'react'
-import '../ui/login.css'
+import '../styles/login.css'
 
 function LoginBtn() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../ui/Reveal.css'
+import '../styles/Reveal.css'
 import lightbulb from '../../assets/icon/light_bulb.png'
 
 function RevealBtn({ onRevealClick }) {

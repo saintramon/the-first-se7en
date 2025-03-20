@@ -1,5 +1,5 @@
 import React from 'react'
-import '../ui/true_or_false.css'
+import '../styles/true_or_false.css'
 
 function TrueOrFalseBtn() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import "../ui/letter_set.css";
+import "../styles/letter_set.css";
 
 function LetterSet({ letters, onLetterClick }) {
 	return (

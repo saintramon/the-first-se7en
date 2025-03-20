@@ -1,5 +1,5 @@
 import React from 'react'
-import '../ui/signup.css'
+import '../styles/signup.css'
 
 function SignupBtn() {
   return (

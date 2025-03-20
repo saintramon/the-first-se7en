@@ -1,5 +1,5 @@
 import React from 'react'
-import '../ui/next.css'
+import '../styles/next.css'
 
 function NextBtn() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import '../ui/Play.css'
+import '../styles/Play.css'
 
 function PlayBtn() {
   return (
