@@ -1,4 +1,4 @@
-const conn = require('../config/Connection');
+const conn = require('../config/Database');
 
 /** Internal Methods */
 /** Used for all queries within this class. Params can be a param list enclosed in a [] */
