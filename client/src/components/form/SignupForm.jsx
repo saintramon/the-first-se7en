@@ -46,8 +46,6 @@ function SignupForm() {
                 <p>Already have an account? 
                     <Link to="/login" className="signup-link"> Log In </Link>
                 </p>                
-                {error && <p className="error-text">{error}</p>}
-                {success && <p className="success-text">{success}</p>}
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                         <Form.Control 
@@ -78,6 +76,8 @@ function SignupForm() {
                     </Form.Group>
                     <SignupBtn type="submit" />
                 </Form>
+                {success && <p className="success-text">{success}</p>}
+                {error && <p className="error-text">{error}</p>}
             </Card.Body>
         </Card>
     );

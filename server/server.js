@@ -2,10 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const path = require("path");
-const conn = require("./config/Connection");
 const session = require('express-session');
-const http = require('http');
-const gameQueries = require("./models/GameQueries")
 
 const PORT = 8080;
 
@@ -27,7 +24,9 @@ app.use(session({
 
 app.use(cors({
     origin: 'http://localhost:3000', // send data to frontend
-    credentials: true
+    credentials: true,
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 app.use(express.json());
