@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './logout.css';
+import './LogOut.css';
 import logoutBtn from '../../assets/icon/logout-icon-white.png';
 import logoutHover from '../../assets/icon/logout-icon-orange.png';
 

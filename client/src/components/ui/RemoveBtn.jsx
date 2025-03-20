@@ -1,5 +1,5 @@
 import React from 'react'
-import './remove.css'
+import './Remove.css'
 import erase from '../../assets/icon/erase.png'
 
 function RemoveBtn() {
