@@ -1,5 +1,5 @@
 import React from "react";
-import "./lives.css";
+import "../ui/lives.css";
 import heartFilled from "../../assets/icon/heart-filled.png"; // Filled heart image
 import heartOutline from "../../assets/icon/heart-outline.png"; // Outlined heart image
 

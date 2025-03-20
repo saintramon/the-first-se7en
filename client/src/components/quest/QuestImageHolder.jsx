@@ -1,5 +1,5 @@
 import React from "react";
-import "./quest_image_holder.css";
+import "../ui/quest_image_holder.css";
 
 const QuestImageHolder = ({ images, answer }) => {
   return (

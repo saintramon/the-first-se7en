@@ -1,5 +1,5 @@
 import React from 'react';
-import "./answer_holder.css";
+import "../ui/answer_holder.css";
 
 function AnswerHolder({ words }) {
 	const renderAnswerRows = () => {
