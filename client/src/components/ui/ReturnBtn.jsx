@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Return.css';
+import './return.css';
 import rtn from '../../assets/icon/return-icon-white.png';
 import rtnHover from '../../assets/icon/return-icon-orange.png';
 

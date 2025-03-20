@@ -1,14 +1,14 @@
 import React from 'react'
-import './Back.css'
+import './close.css'
 import close from '../../assets/icon/close.png'
 
-function BackBtn() {
+function CloseBtn() {
   return (
     <div>
-      <button class = "btn">
+      <button class = "close-btn">
               <img src={close} alt="Close Button"/> </button>
     </div>
   )
 }
 
-export default BackBtn
+export default CloseBtn

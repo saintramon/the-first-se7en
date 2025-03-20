@@ -1,12 +1,12 @@
 import React from 'react'
-import './Remove.css'
+import './remove.css'
 import erase from '../../assets/icon/erase.png'
 
 function RemoveBtn() {
   return (
 <div>
         <button class = "btn">
-       <img src={erase} alt="Previous"/> </button>
+       <img src={erase} alt="Remove"/> </button>
 </div>
   )
 }
