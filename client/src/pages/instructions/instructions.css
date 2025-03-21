@@ -74,8 +74,7 @@
 
 button {
     padding: 12px 24px;
-    font-size: 1.2em;
-    border-radius: 30px !important;
+    font-size: 1.2em;;
     cursor: pointer;
     transition: background 0.3s ease;
     text-transform: uppercase;
