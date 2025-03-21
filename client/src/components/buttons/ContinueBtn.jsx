@@ -4,7 +4,7 @@ import '../styles/continue.css'
 function ContinueBtn() {
   return (
     <div>
-      <button>Continue</button>
+      <button className="continue-btn">Continue</button>
     </div>
   )
 }

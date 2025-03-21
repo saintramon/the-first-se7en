@@ -2,7 +2,7 @@ import React from "react";
 import NavbarHome from "../../components/navigation/NavbarHome";
 import PlayBtn from "../../components/buttons/PlayBtn";
 import HowToBtn from "../../components/buttons/HowToBtn";
-import logo from "../../assets/icon/logo.png"; 
+import logoVideo from "../../assets/video/l2c-video.mp4"; 
 import "./home.css";
 
 function Home() {
@@ -13,7 +13,17 @@ function Home() {
       </div>
 
       <div className="logo-container">
-        <img src={logo} alt="Litra2Code Logo" className="app-logo" />
+        {/* Replace the image with a video */}
+        <video 
+          src={logoVideo} 
+          alt="Litra2Code Logo" 
+          className="app-logo" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          style={{ background: "none" }} 
+        />
       </div>
 
       <div className="button-container">
