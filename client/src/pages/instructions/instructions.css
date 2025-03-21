@@ -11,7 +11,11 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
-  }
+    font-family: 'Manrope', sans-serif;
+    color: #333;
+    padding: 20px;
+    box-sizing: border-box;
+}
 
 .navbar-container {
     width: 100%;
@@ -29,34 +33,59 @@
 
 .main-title h1 {
     font-weight: 300;
-    font-size: 4em;
-    margin-top: auto;
+    font-size: 3.5em;
+    margin: 0;
+    color: #000;
 }
 
 .subtitle h2 {
-    margin-top: 20px;
-    font-size: 40px;
-    color: #333;
+    margin-top: 30px;
+    font-size: 32px;
+    color: #000;
 }
 
 .content-container {
-    margin-top: 30px;
-    width: 80%;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 1000px;
     text-align: justify;
-    margin-bottom: 20px;
 }
+
+.content-container p {
+    color: #000;
+    font-weight: 500;
+    font-size: 1.5em;
+    line-height: 1.8;
+}
+
 
 .arrows-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
+    width: 80%;
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
 }
 
 .arrows-container h2 {
-    margin: 0;
-    font-size: 1em;
-    color: #333;
+    font-size: 1.3em;
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 1.2em;
+    border-radius: 30px !important;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-transform: uppercase;
+}
+
+button:hover {
+    background-color: #388E3C;
+}
+
+button:disabled {
+    background-color: #A5D6A7;
+    cursor: not-allowed;
 }
