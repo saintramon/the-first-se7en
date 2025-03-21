@@ -107,7 +107,7 @@ INSERT INTO `quest` (`quest_id`, `img_1`, `img_2`, `img_3`, `img_4`, `answer`, `
 (17, 'lexeme1.png', 'lexeme2.png', 'lexeme3.png', 'lexeme4.png', 'lexeme', 'hard'),
 (18, 'metalanguage1.png', 'metalanguage2.png', 'metalanguage3.png', 'metalanguage4.png', 'metalanguage', 'hard'),
 (19, 'cern1.png', 'cern2.png', 'cern3.png', 'cern4.png', 'cern', 'hard'),
-(20, 'herman_hollerith1.png', 'herman_hollerith2.png', 'herman_hollerith3.png', '4.png', 'herman_hollerith', 'hard');
+(20, 'herman_hollerith1.png', 'herman_hollerith2.png', 'herman_hollerith3.png', 'herman_hollerith4.png', 'herman_hollerith', 'hard');
 
 --
 -- Indexes for dumped tables
