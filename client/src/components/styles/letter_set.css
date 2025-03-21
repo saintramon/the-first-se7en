@@ -11,8 +11,9 @@
   .letter-button {
 	width: 70px;
 	height: 70px;
+	font-family: 'Arial', sans-serif !important;
 	font-size: 40px;
-	font-weight: bolder;
+	font-weight: 900;
 	border: 3px solid #cccccc; 
 	border-radius: 16px;
 	background: linear-gradient(to bottom, #eeeeee, #bbbbbb);
