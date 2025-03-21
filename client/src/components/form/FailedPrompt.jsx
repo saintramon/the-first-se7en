@@ -1,7 +1,7 @@
 import React from "react";
 import FailedBanner from '../../assets/icon/failed.png';    
 import Next from '../../components/buttons/NextBtn';
-import "./home.css";
+import "./failed.css";
 
 function FailedPrompt() {
   return (
