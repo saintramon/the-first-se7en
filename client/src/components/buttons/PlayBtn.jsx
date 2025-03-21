@@ -1,12 +1,15 @@
-import React from 'react'
-import '../styles/Play.css'
+import React from "react";
+import { Link } from "react-router-dom";
+import "../styles/Play.css";
 
 function PlayBtn() {
   return (
     <div>
-        <button> PLAY</button>
+      <Link to="/quest" className="play-btn">
+        PLAY
+      </Link>
     </div>
-  )
+  );
 }
 
-export default PlayBtn
+export default PlayBtn;

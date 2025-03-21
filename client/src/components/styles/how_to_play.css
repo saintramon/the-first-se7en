@@ -1,17 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
 
-button {
-    font-size: 24px;
-    color: #000000;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 800;
-    cursor: pointer;  
-    position: relative;
-    text-decoration:underline ;
-    border: none;
-    background: none;
-    text-transform: uppercase;
-    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-    transition-duration: 400ms;
-    transition-property: color;
-  }
+.how-to-btn {
+  all:unset;
+  font-size: 24px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  color: black;
+  background: none !important;
+  border: none !important; 
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: underline;
+  white-space: nowrap;
+  padding: 0; 
+  display: inline; 
+  margin-top: 10px;
+}
+
+.how-to-btn:hover {
+  color: #4B5AE4 !important; 
+}
+
+.how-to-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+

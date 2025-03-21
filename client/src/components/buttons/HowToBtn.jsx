@@ -1,14 +1,10 @@
-import React from 'react'
-import '../styles/how_to_play.css'
+import React from 'react';
+import '../styles/how_to_play.css';
 
 function HowToBtn() {
   return (
-  <div>
-    <button>
-      How to Play
-    </button>
-  </div>
-  )
+    <button className="how-to-btn">HOW TO PLAY</button>
+  );
 }
 
-export default HowToBtn
+export default HowToBtn;
