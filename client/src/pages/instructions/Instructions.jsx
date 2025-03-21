@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Navbar from '../../components/navigation/Navbar';
-import ArrowsBtn from '../../components/buttons/ArrowsBtn';
 import "./instructions.css";
 
 const pages = [

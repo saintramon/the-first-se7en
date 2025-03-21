@@ -1,0 +1,66 @@
+.welcome-prompt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+  }
+  
+  .welcome-card {
+    background: white;
+    width: 650px;
+    height: 400px;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .welcome-text {
+    font-size: 50px;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .message {
+    margin-top: 70px;
+  }
+  .message, .message-two {
+    font-size: 30px;
+    color: #000;
+    line-height: 0.4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+  
+  .xp-icon {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+  }
+  
+  .continue-btn {
+    background: #4c6ef5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 70px;
+  }
+  
+  .continue-btn:hover {
+    background: #3b5bdb;
+  }
+  
