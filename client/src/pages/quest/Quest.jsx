@@ -20,6 +20,7 @@ function Quest() {
   const [hintIndex, setHintIndex] = useState(-1);
   const [removedLetter, setRemovedLetter] = useState(false);
   const [attemptsLeft, setAttemptsLeft] = useState(3);
+  const [isComplete, setIsComplete] = useState(false);
   
   // Tracks which letter button corresponds to each position in the answer
   const [letterMapping, setLetterMapping] = useState({});
@@ -58,6 +59,9 @@ function Quest() {
       
       // Move to the next position
       setCurrLetter(prevPos => prevPos + 1);
+
+      // Check if the answer is complete
+      setTimeout(() => setIsComplete(checkCompleteness()), 0);
     }
   };
 
@@ -89,6 +93,9 @@ function Quest() {
       if (position < currLetter) {
         setCurrLetter(position);
       }
+
+      // Check if the answer is still complete
+      setTimeout(() => setIsComplete(checkCompleteness()), 0);
     }
   };
 
@@ -141,6 +148,20 @@ function Quest() {
     }
   };
 
+  const checkCompleteness = () => {
+    const answerHolder = document.getElementById('answerHolder');
+    if (!answerHolder) {
+      return false; 
+    }
+  
+    const filledLetters = Array.from(answerHolder.children); 
+  
+    return filledLetters.every((div) => {
+      const h2 = div.querySelector("h2"); 
+      return h2 && h2.innerHTML.trim().length > 0; 
+    });
+  };
+  
   const handleSubmit = () => {
     let childDivs = document.getElementById('answerHolder').childNodes;
     let word = "";
@@ -177,7 +198,8 @@ function Quest() {
         if (newAttempts <= 0) {
           // TODO: MINUS XP
 
-          // Reload the page
+          // Add wrong prompt here.
+          // Reload page after
           window.location.reload();
         }
         return newAttempts;
@@ -224,7 +246,7 @@ function Quest() {
             <div className="action-buttons">
               <RevealBtn onRevealClick={handleReveal} />
               <RemoveBtn onRemoveClick={handleRemove} />
-              <SubmitBtn onSubmitClick={handleSubmit} />
+              <SubmitBtn onSubmitClick={handleSubmit} disabled={!isComplete} />
             </div>
           </div>
         </div>
