@@ -93,7 +93,22 @@ const submitRevealLetter = (req, res) => {
 };
 
 const updateXP = (req, res) => {
+    console.log("UPDATE XP");
 
+    let playerID = req.body.playerID;
+    let questID = req.body.questID;
+    let decision = req.body.decision;
+
+    model.updateXP(questID, playerID, decision)
+        .then((results) => {
+            console.log("XP Updated: ", results);
+            res.status(200).json({ message: "XP Updated" });
+        })
+        .catch((error) => {
+            console.error("Error updating XP: ", error);
+            res.status(500).json({ error: "Internal Server Error" });
+        }
+    );
 }
 
 const submitRemoveLetter = (req, res) => {
