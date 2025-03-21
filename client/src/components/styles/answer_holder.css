@@ -40,3 +40,13 @@
 	margin: 0; 
 	text-align: center; 
   }
+
+.answer-holder:not(:empty) {
+	cursor: pointer;
+  }
+  
+  .answer-holder:hover h2:not(:empty) {
+	color: #ff0000; /* Test color */
+	transform: scale(1.05);
+	transition: all 0.2s ease;
+  }
