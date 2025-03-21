@@ -3,7 +3,7 @@ import FailedBanner from '../../assets/icon/failed.png';
 import Next from '../../components/buttons/NextBtn';
 import "./home.css";
 
-function Home() {
+function FailedPrompt() {
   return (
     <div className="failed-container">
       <div className="failed-banner-container">
@@ -18,4 +18,4 @@ function Home() {
 
 }
 
-export default Home;
+export default FailedPrompt;
