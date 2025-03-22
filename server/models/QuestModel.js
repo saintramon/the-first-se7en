@@ -1,6 +1,8 @@
 const {
     getQuestInfo : getQuestInfo,
     getQuestAnswer : getQuestAnswer,
+    xpUP : xpUP,
+    xpDown : xpDown,
 } = require('../services/GameQueries')
 
 function processQuestInfo(results) {
@@ -32,25 +34,33 @@ function getQuestInformation(questID) {
         })
     })
 }
-function processAnswer(results) {
-    // TODO:
 
-}
+// Deprecated function, for now.
+// function processAnswer(results) {
+//     // TODO:
 
-function getQuestAnswerPromise(questID) {
+// }
+
+function updateXP(questionID, playerID, decision) {
     return new Promise((resolve, reject) => {
-        getQuestAnswer(questID, (err, results) => {
-            if (err) return reject(err);
-            else {
-                console.log("Raw results: ", results);
-                const processedAnswer = processAnswer(results);
-                resolve(processedAnswer);
+        if (decision == 'up') { 
+            xpUP(playerID, questionID, (err, results) => {
+                if (err) {
+                    return reject(err);
+                }
+                resolve(results);
+            });
+        } else {
+            xpDown(playerID, questionID, (err, results) => {
+            if (err) {
+                return reject(err);
             }
+            resolve(results);
         });
+        }
     });
 }
 
-
 module.exports = {
-    getQuestInformation, getQuestAnswer,
+    getQuestInformation, getQuestAnswer,updateXP
 }

@@ -16,4 +16,6 @@ router.post('/revealLetter', QuestController.revealLetter);
 // When someone wants to remove a letter
 router.post('/removeLetter', QuestController.removeLetter);
 
+router.post('/updateXP', QuestController.updateXP);
+
 module.exports = router;

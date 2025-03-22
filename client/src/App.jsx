@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import axios from '../axios.config';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,16 +12,31 @@ import BonusQuest from './pages/bonus_quest/BonusQuest';
 
 function App() {
   const [user, setUser] = useState(null);
+  const [xp, setXP] = useState(0);
   const [response, setResponse] = useState(null);
 
 
   // check if a user is logged in to handle redirection.
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
+    const storedXP = localStorage.getItem('userXP');
+
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
-  }, [])
+
+    if (storedXP) {
+      setXP(parseInt(storedXP, 10)); // Ensure XP is stored as a number
+    }
+  }, []);
+
+  const updateUser = (newUser, newXP) => {
+    setUser(newUser);
+    setXP(newXP);
+
+    localStorage.setItem('user', JSON.stringify(newUser)); // Save new user
+    localStorage.setItem('userXP', newXP); // Save new XP
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -52,12 +67,12 @@ function App() {
     // UNCOMMENT FOR DEV / TESTING
     <Router>
       <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home user={user} />} />
+        <Route path="/login" element={<Login updateUser={updateUser} />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/instructions" element={<Instructions /> } />
-        <Route path="/quest" element={<Quest /> } />
-        <Route path="/bonus_quest" element={<BonusQuest /> } />
+        <Route path="/instructions" element={<Instructions user={user} /> } />
+        <Route path="/quest" element={<Quest user={user} updateUser={updateUser} />} />
+        <Route path="/bonus_quest" element={<BonusQuest user={user}/> } />
       </Routes>
     </Router> 
   );

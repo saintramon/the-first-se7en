@@ -56,28 +56,33 @@ function getPlayerXP(playerID, callback) {
     Hard:   +20
 */
 function xpUP(playerID, questID, callback) {
-    getQuestDifficulty(questID, (err, results) => {
-        if (err) return err;
-        else {
-            questDifficulty =  results[0].difficulty;
-            return getPlayerXP(playerID, (err, results) => {
-                xp = results[0].xp_level;
-                if (err) return err;
-                else {
-                    switch(questDifficulty) {
-                        case "easy": xp += 5; break;
-                        case "medium": xp += 10; break;
-                        case "hard": xp+= 20; break;
-                    }
-                    console.log("NEW XP: " + xp)
-
-                    return xpOperation(playerID, xp, (err, results)=> {
-                        if(err) return err;
-                        else return results;
-                    });
-                }
-            });
+    getQuestDifficulty(questID, (err, difficultyResults) => {
+        if (err || !difficultyResults || difficultyResults.length === 0) {
+            return callback(new Error("Quest difficulty not found"), null);
         }
+
+        const questDifficulty = difficultyResults[0].difficulty;
+
+        getPlayerXP(playerID, (err, xpResults) => {
+            if (err || !xpResults || xpResults.length === 0) {
+                return callback(new Error("Player XP not found"), null);
+            }
+
+            let xp = xpResults[0].xp_level;
+
+            switch (questDifficulty) {
+                case "easy": xp += 5; break;
+                case "medium": xp += 10; break;
+                case "hard": xp += 20; break;
+            }
+
+            console.log("NEW XP: " + xp);
+
+            xpOperation(playerID, xp, (err, updateResults) => {
+                if (err) return callback(err, null);
+                return callback(null, updateResults);
+            });
+        });
     });
 }
 

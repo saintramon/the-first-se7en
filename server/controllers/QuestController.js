@@ -91,9 +91,31 @@ const submitRevealLetter = (req, res) => {
     
    
 };
-
 const updateXP = (req, res) => {
+    console.log("UPDATE XP");
 
+    let playerID = req.body.playerID;
+    let questID = req.body.questID;
+    let decision = req.body.decision;
+
+    model.updateXP(questID, playerID, decision)
+        .then((results) => {
+            console.log("XP Updated: ", results);
+            
+            // Extract the updated XP value from results
+            const updatedXP = results.newXP || results.xp || results;
+            
+            // Return the updated XP value to the frontend
+            res.status(200).json({ 
+                message: "XP Updated",
+                updatedXP: updatedXP
+            });
+        })
+        .catch((error) => {
+            console.error("Error updating XP: ", error);
+            res.status(500).json({ error: "Internal Server Error" });
+        }
+    );
 }
 
 const submitRemoveLetter = (req, res) => {
