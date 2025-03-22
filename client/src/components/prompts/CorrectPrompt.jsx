@@ -21,6 +21,7 @@ function CorrectPrompt({ xp }) {
         <Next />
       </div>
     </div>
+    
   );
 }
 
