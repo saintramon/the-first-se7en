@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import LoginBtn from '../buttons/LoginBtn';
 import '../styles/forms.css';
 
-function LoginForm() {
+function LoginForm( { updateUser }) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -21,7 +21,7 @@ function LoginForm() {
                 password       
             });
 
-            localStorage.setItem('user', JSON.stringify(response.data)); // saves session in localStorage
+            updateUser(response.data, response.data.xp);
 
             navigate('/home');
         } catch (err) {
