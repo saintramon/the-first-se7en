@@ -10,7 +10,7 @@ import Lives from "../../components/quest/Lives";
 import RevealBtn from '../../components/quest/RevealBtn';
 import RemoveBtn from '../../components/quest/RemoveBtn';
 import SubmitBtn from '../../components/buttons/SubmitBtn';
-import FailedPrompt from '../../components/form/FailedPrompt';
+import FailedPrompt from '../../components/prompts/FailedPrompt';
 import './quest.css';
 
 function Quest({ user, updateUser }) {
