@@ -9,6 +9,7 @@ import Signup from './pages/signup/Signup';
 import Instructions from './pages/instructions/Instructions';
 import Quest from './pages/quest/Quest';
 import BonusQuest from './pages/bonus_quest/BonusQuest';
+import Logout from './pages/logout/Logout';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -38,6 +39,13 @@ function App() {
     localStorage.setItem('userXP', newXP); // Save new XP
   };
 
+    const handleLogout = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('userXP');
+    setUser(null);
+    setXP(0);
+  };
+
   useEffect(() => {
     async function fetchData() {
         try {
@@ -52,15 +60,16 @@ function App() {
   }, []);
 
   return (
-    // FOR PRODUCTIO
+    // FOR PRODUCTION (buggy, do not use yet)
     // <Router>
     //   <Routes>
-    //     <Route path="/" element={<Home />} />
-    //     <Route path="/login" element={user ? <Navigate to="/home" /> : <Login />} />
+    //     <Route path="/home" element={user ? <Home user={user} xp={xp} /> : <Navigate to="/login" />} />
+    //     <Route path="/login" element={<Login updateUser={updateUser} />} />
     //     <Route path="/signup" element={<Signup />} />
-    //     <Route path="/instructions" element={user ? <Instructions /> : <Navigate to="/login"/>} />
-    //     <Route path="/quest" element={user ? <Quest /> : <Navigate to="/login"/>} />
-    //     <Route path="/bonus_quest" element={user ? <BonusQuest /> : <Navigate to="/login"/>} />
+    //     <Route path="/instructions" element={user ? <Instructions user={user} xp={xp} /> : <Navigate to="/login" />} />
+    //     <Route path="/quest" element={user ? <Quest user={user} xp={xp} updateUser={updateUser} /> : <Navigate to="/login" />} />
+    //     <Route path="/bonus_quest" element={user ? <BonusQuest user={user} xp={xp} /> : <Navigate to="/login" />} />
+    //     <Route path="/logout" element={<Logout onLogout={handleLogout} />} /> 
     //   </Routes>
     // </Router>
     
@@ -73,6 +82,7 @@ function App() {
         <Route path="/instructions" element={<Instructions user={user} /> } />
         <Route path="/quest" element={<Quest user={user} updateUser={updateUser} />} />
         <Route path="/bonus_quest" element={<BonusQuest user={user}/> } />
+        <Route path="/logout" element={<Logout onLogout={handleLogout} />} />
       </Routes>
     </Router> 
   );
