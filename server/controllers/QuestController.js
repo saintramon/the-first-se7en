@@ -91,7 +91,6 @@ const submitRevealLetter = (req, res) => {
     
    
 };
-
 const updateXP = (req, res) => {
     console.log("UPDATE XP");
 
@@ -102,7 +101,15 @@ const updateXP = (req, res) => {
     model.updateXP(questID, playerID, decision)
         .then((results) => {
             console.log("XP Updated: ", results);
-            res.status(200).json({ message: "XP Updated" });
+            
+            // Extract the updated XP value from results
+            const updatedXP = results.newXP || results.xp || results;
+            
+            // Return the updated XP value to the frontend
+            res.status(200).json({ 
+                message: "XP Updated",
+                updatedXP: updatedXP
+            });
         })
         .catch((error) => {
             console.error("Error updating XP: ", error);

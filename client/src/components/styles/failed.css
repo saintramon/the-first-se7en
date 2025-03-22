@@ -16,6 +16,7 @@
     height: 350px;
     align-items: center;
     margin-bottom: 50px;
+    justify-content: center;
     /* margin-bottom: -70px; */
   }
   

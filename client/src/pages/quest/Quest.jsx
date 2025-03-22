@@ -10,21 +10,33 @@ import Lives from "../../components/quest/Lives";
 import RevealBtn from '../../components/quest/RevealBtn';
 import RemoveBtn from '../../components/quest/RemoveBtn';
 import SubmitBtn from '../../components/buttons/SubmitBtn';
+import FailedPrompt from '../../components/form/FailedPrompt';
 import './quest.css';
 
-function Quest() {
+function Quest({ user, updateUser }) {
   const [quest, setQuest] = useState(null);
   const [error, setError] = useState(null);
+  const [userState, setUserState] = useState(user);
 
   const [currLetter, setCurrLetter] = useState(0);
   const [hintIndex, setHintIndex] = useState(-1);
   const [removedLetter, setRemovedLetter] = useState(false);
   const [attemptsLeft, setAttemptsLeft] = useState(3);
   const [isComplete, setIsComplete] = useState(false);
+  const [showFailedPrompt, setShowFailedPrompt] = useState(false);
+  const [isUpdatingXP, setIsUpdatingXP] = useState(false);
   
   // Tracks which letter button corresponds to each position in the answer
   const [letterMapping, setLetterMapping] = useState({});
 
+  // Sync user state whenever the user prop changes
+  useEffect(() => {
+    if (user) {
+      setUserState(user);
+    }
+  }, [user]);
+
+  // Fetch quest data when component mounts
   useEffect(() => {
     axios.get('/api/quest')
       .then((response) => {
@@ -37,6 +49,7 @@ function Quest() {
       });
   }, []);
 
+  // Handle a letter being clicked in the letter set
   const handleLetterClick = (id, letter) => {
     if (currLetter !== quest.answer.length) {
       if (currLetter === hintIndex) {
@@ -65,6 +78,7 @@ function Quest() {
     }
   };
 
+  // Handle removing a letter from the answer
   const handleLetterReturn = (position) => {
     if (position === hintIndex) {
       return;
@@ -99,7 +113,7 @@ function Quest() {
     }
   };
 
-  // Handler for reveal button
+  // Handler for reveal button - get a hint letter
   const handleReveal = () => {
     if (hintIndex === -1) {
       axios.post('/api/quest/revealLetter', {
@@ -126,6 +140,7 @@ function Quest() {
     }
   };
 
+  // Handler for remove button - remove an incorrect letter
   const handleRemove = () => {
     if (!removedLetter) {
       axios.post('/api/quest/removeLetter', {
@@ -148,6 +163,7 @@ function Quest() {
     }
   };
 
+  // Check if the answer is completely filled in
   const checkCompleteness = () => {
     const answerHolder = document.getElementById('answerHolder');
     if (!answerHolder) {
@@ -162,10 +178,64 @@ function Quest() {
     });
   };
   
-  const handleSubmit = () => {
+  // Update the user's XP on the server and in local state
+  const updateServerXp = async (decision) => {
+    if (!userState || isUpdatingXP) return;
+
+    try {
+        setIsUpdatingXP(true);
+        
+        console.log("Updating XP for user:", userState.id, "Decision:", decision);
+        
+        const res = await axios.post('/api/quest/updateXP', {
+            playerID: userState.id,
+            questID: quest?.id || 1,
+            decision,
+        });
+
+        console.log("XP update response:", res.data);
+
+        if (res.data.updatedXP !== undefined) {
+            const updatedUser = { 
+                ...userState, 
+                xp: res.data.updatedXP,
+                xp_level: res.data.updatedXP
+            };
+            
+            console.log("Updated user state:", updatedUser);
+            setUserState(updatedUser);
+            
+            if (typeof updateUser === 'function') {
+                updateUser(updatedUser);
+            }
+            
+            // Optional localStorage update if your app uses it
+            if (window.localStorage) {
+                const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+                storedUser.xp = res.data.updatedXP;
+                storedUser.xp_level = res.data.updatedXP;
+                localStorage.setItem('user', JSON.stringify(storedUser));
+            }
+            
+            return true;
+        } else {
+            console.warn("Warning: updatedXP not found in response:", res.data);
+            return false;
+        }
+    } catch (err) {
+        console.error("Failed to update XP on server:", err);
+        return false;
+    } finally {
+        setIsUpdatingXP(false);
+    }
+};
+
+  // Handle submit button click
+  const handleSubmit = async () => {
     let childDivs = document.getElementById('answerHolder').childNodes;
     let word = "";
     
+    // Extract the user's answer from the DOM
     if (childDivs.length === 2) {
       childDivs.forEach(function(childChildDiv) {
         let childChildDivNodes = childChildDiv.childNodes;
@@ -187,33 +257,57 @@ function Quest() {
       });
     }
 
+    // Check if the answer is correct
     if (quest.answer.toUpperCase() === word) {
-      console.log("Correct!");
-      // TODO: PLUS XP
-      window.location.reload();
-      setAttempts(0);
+      console.log("Correct answer provided!");
+      
+      // Update XP on the server - correct answer
+      const success = await updateServerXp('up');
+      
+      if (success) {
+        // Give a small delay before reloading to ensure XP update is processed
+        setTimeout(() => {
+          console.log("Reloading page after successful XP update");
+          window.location.reload();
+        }, 300);
+      } else {
+        // If XP update failed, still reload but log a warning
+        console.warn("XP update may not have been processed correctly");
+        window.location.reload();
+      }
     } else {
+      // Incorrect answer - reduce attempts
       setAttemptsLeft(prev => {
         const newAttempts = prev - 1;
         if (newAttempts <= 0) {
-          // TODO: MINUS XP
-
-          // Add wrong prompt here.
-          // Reload page after
-          window.location.reload();
+          // Update XP on the server - incorrect answer
+          updateServerXp('down').then(success => {
+            console.log("XP updated after failed attempts:", success);
+            setShowFailedPrompt(true);
+          });
         }
         return newAttempts;
       });
     }
   };
 
+  // Handle moving to the next quest after failure
+  const handleNextAfterFailure = () => {
+    window.location.reload();
+  };
+
+  // Render loading or error states
   if (error) return <div>Error: {error}</div>;
   if (!quest) return <div>Loading...</div>;
 
   return (
     <BGContainer difficulty={quest.difficulty}>
       <div className="quest-page">
-        <Navbar />
+        {showFailedPrompt ? (
+          <FailedPrompt onNext={handleNextAfterFailure} />
+        ) : (
+          <>
+        <Navbar xp={userState.xp || userState.xp_level || 0} />
 
         <div className="quest-heading">
           <QuestDifficulty level={quest.difficulty.toUpperCase()} />
@@ -250,6 +344,8 @@ function Quest() {
             </div>
           </div>
         </div>
+        </>
+        )}
       </div>
     </BGContainer>
   );
