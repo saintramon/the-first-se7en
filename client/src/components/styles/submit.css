@@ -25,6 +25,9 @@ button {
    }
    
    button:disabled {
-    cursor: auto;
-    color: grey;
-   }
+    cursor: not-allowed; 
+    background: #A0A0A0;
+    color: #CCCCCC; 
+    box-shadow: none; 
+    opacity: 0.6; 
+}

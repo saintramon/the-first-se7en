@@ -5,7 +5,7 @@ import LogOutBtn from "../navigation/LogOutBtn";
 import XPbar from "./XPBar";
 import "../styles/navbar.css";
 
-const Navbar = () => {
+const Navbar = ( {xp}) => {
   return (
     <div className="navbar">
       <div className="left-section">
@@ -16,7 +16,7 @@ const Navbar = () => {
       </div>
       <div className="right-section">
         <LogOutBtn />
-        <XPbar xp="100"/>
+        <XPbar xp={xp}/>
       </div>
     </div>
   );
