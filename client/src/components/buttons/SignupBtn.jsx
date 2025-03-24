@@ -3,10 +3,8 @@ import '../styles/signup.css'
 
 function SignupBtn() {
   return (
-    <div>
-      <button>Sign Up</button>
-    </div>
-  )
+    <button className="btn-signup">Sign Up</button>
+  );
 }
 
-export default SignupBtn
+export default SignupBtn;
