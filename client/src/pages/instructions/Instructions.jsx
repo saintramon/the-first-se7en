@@ -5,7 +5,7 @@ import "./instructions.css";
 const pages = [
   {
     subtitle: "Objectives of the Game",
-    content: "A quest displays four images linked to a certain personality, concept, or technology related to the history of programming languages. The player’s goal is to figure out the quest with a given set of letters beside the image. Answering a quest will give the player XP (5XP - Easy, 10 XP - Medium, 20 XP - Hard).\n\nA player is only given three chances to complete a quest. Failure to answer will result in a 5 XP deduction.\n\nThere are a total of 15 quests presented in a randomized order."
+    content: "A quest displays four images linked to a certain personality, concept, or technology related to the history of programming languages. The player’s goal is to figure out the quest with a given set of letters beside the image. Answering a quest will give the player XP (5XP - Easy, 10 XP - Medium, 20 XP - Hard).\n\nA player is only given three chances to complete a quest. Failure to answer will result in a 5 XP deduction.\n\nThere are a total of 20 quests presented in a randomized order."
   },
   {
     subtitle: "Hints",
@@ -52,9 +52,9 @@ function Instructions() {
       </div>
 
       <div className="arrows-container">
-        <button onClick={handlePrev}>Previous</button>
+        <button className="btn-prev" onClick={handlePrev}>Previous</button>
         <h2>Page {pageIndex + 1} of {pages.length}</h2>
-        <button onClick={handleNext}>Next</button>
+        <button className="btn-next" onClick={handleNext}>Next</button>
       </div>
     </div>
   );

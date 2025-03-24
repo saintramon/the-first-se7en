@@ -1,32 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
+@font-face {
+    font-family: Manrope;
+    src: url('/fonts/Manrope/Manrope-VariableFont_wght.ttf');
+  }
 
-.continue-btn {
+.btn-continue {
     background-color: #4B5AE4;
-    font-family: 'Manrope', sans-serif;
-    font-size: 15px;
+    font-family: Manrope;
+    font-size: 26px;
     font-weight: bold;
     border: none;
-    width: 120px;
-    height: 50px;
-    padding: 1rem;
-    border-radius: 1rem;
-    color: rgb(255, 255, 255);
-    box-shadow: 0 0.4rem #dfd9d9;
-    cursor: pointer;
-   }
-   
-   .continue-btn:active {
+    width: 170px;
+    height: 70px;
+    border-radius: 50px;
     color: white;
-    box-shadow: 0 0.2rem #dfd9d9;
-    transform: translateY(0.2rem);
-   }
-   
-   .continue-btn:hover:not(:disabled) {
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.btn-continue:active {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(2px);
+}
+
+.btn-continue:hover:not(:disabled) {
     background: #1f32de;
     color: #f5bb3d;
-   }
-   
-   .continue-btn:disabled {
-    cursor: auto;
-    color: grey;
-   }
+}
+
+.btn-continue:disabled {
+    cursor: not-allowed;
+    background: #A0A0A0;
+    color: #CCCCCC;
+    box-shadow: none;
+    opacity: 0.6;
+}

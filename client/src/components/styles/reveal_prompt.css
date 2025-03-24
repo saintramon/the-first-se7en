@@ -1,7 +1,7 @@
 @font-face {
-    font-family: Sniglet;
-    src: url(client/public/fonts/Sniglet/Sniglet-Regular.ttf);
-  }
+  font-family: Sniglet-Regular;
+  src: url('/fonts/Sniglet/Sniglet-Regular.ttf');
+}
   
   .reveal-prompt {
     display: flex;
@@ -38,22 +38,23 @@
   }
   
   .reveal-text {
-    font-family: Sniglet;
-    font-size: 35px;
+    color: #F15151;
+    font-family: Sniglet-Regular;
+    font-size: 40px;
     margin-top: 40px;
     margin-bottom: 15px;
   }
   
   .reveal-message {
-    font-family: Sniglet;
-    font-size: 30px;
+    font-family: Sniglet-Regular;
+    font-size: 25px;
     color: #000;
     margin-bottom: 5px;
   }
   
   .reveal-message-two {
-    font-family: Sniglet;
-    font-size: 30px;
+    font-family: Sniglet-Regular;
+    font-size: 25px;
     color: #000;
     margin-bottom: 30px;
   }
@@ -65,10 +66,10 @@
   }
   
   .reveal-yes-btn, .reveal-no-btn {
-    font-family: Sniglet;
-    font-size: 30px;
+    font-family: Sniglet-Regular;
+    font-size: 25px;
     padding: 10px 20px;
-    height: 70px;
+    height: 60px;
     width: 120px;
     border: none;
     border-radius: 8px;

@@ -1,3 +1,8 @@
+@font-face {
+	font-family: Poppins-Bold;
+	src: url('/fonts/Poppins/Poppins-Bold.ttf');
+  }
+
 .letter-set {
 	display: grid;
 	grid-template-columns: repeat(8, 1fr); 
@@ -11,9 +16,8 @@
   .letter-button {
 	width: 70px;
 	height: 70px;
-	font-family: 'Arial', sans-serif !important;
-	font-size: 40px;
-	font-weight: 900;
+	font-family: Poppins-Bold;
+	font-size: 45px;
 	border: 3px solid #cccccc; 
 	border-radius: 16px;
 	background: linear-gradient(to bottom, #eeeeee, #bbbbbb);

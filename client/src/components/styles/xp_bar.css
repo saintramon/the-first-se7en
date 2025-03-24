@@ -1,6 +1,6 @@
 @font-face {
-  font-family: Sniglet;
-  src: url(client/public/fonts/client/public/fonts/Sniglet/Sniglet-Regular.ttf);
+  font-family: Sniglet-Regular;
+  src: url('/fonts/Sniglet/Sniglet-Regular.ttf');
 }
 
 .xp-bar {
@@ -29,7 +29,7 @@
 
 .xp-value {
   color: white;
-  font-family: Sniglet;
+  font-family: Sniglet-Regular;
   font-size: 28px;
   margin-left: 10px; 
 }

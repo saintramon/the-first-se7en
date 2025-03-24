@@ -3,10 +3,8 @@ import '../styles/login.css'
 
 function LoginBtn() {
   return (
-    <div>
-      <button>Log In</button>
-    </div>
-  )
+    <button className="btn-login">Log In</button>
+  );
 }
 
-export default LoginBtn
+export default LoginBtn;
