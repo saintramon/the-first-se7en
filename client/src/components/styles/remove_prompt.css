@@ -1,6 +1,6 @@
 @font-face {
     font-family: Sniglet-Regular;
-    src: url('client/public/fonts/Sniglet/Sniglet-Regular.ttf');
+    src: url('/fonts/Sniglet/Sniglet-Regular.ttf');
   }
   
   .remove-prompt {

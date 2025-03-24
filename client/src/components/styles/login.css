@@ -1,6 +1,6 @@
 @font-face {
     font-family: Manrope;
-    src: url('client/public/fonts/Manrope/Manrope-VariableFont_wght.ttf');
+    src: url('/fonts/Manrope/Manrope-VariableFont_wght.ttf');
 }
 
 .btn-login {
