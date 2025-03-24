@@ -5,10 +5,17 @@ const QuestImageHolder = ({ images, answer }) => {
   return (
     <div className="quest-image-grid">
       {images.map((filename, index) => {
-        const imagePath = `public/assets/img/${answer}/${filename}`;
+        const imagePath = `/assets/img/${answer}/${filename}`;
+
         return (
           <div className="quest-image-holder" key={index}>
-            <img src={imagePath} alt={`Image ${index + 1}`} onError={() => console.error("Image not found:", imagePath)} />
+            <img 
+              src={imagePath} 
+              alt={`Image ${index + 1}`} 
+              onContextMenu={(e) => e.preventDefault()}  // Disable right-click
+              draggable={false}  // Prevent drag and drop
+              onError={() => console.error("Image not found:", imagePath)}
+            />
           </div>
         );
       })}

@@ -1,8 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Sniglet:wght@800&display=swap');
+@font-face {
+    font-family: Sniglet;
+    src: url('/fonts/Sniglet/Sniglet-ExtraBold.ttf');
+}
 
 .play-btn {
     background: linear-gradient(to bottom, #4B5AE4, #4B5AE4);
-    font-family: 'Sniglet', sans-serif;
+    font-family: Sniglet;
     font-size: 50px;
     font-weight: bold;
     color: white;
