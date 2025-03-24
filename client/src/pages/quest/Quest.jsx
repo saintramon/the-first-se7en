@@ -10,6 +10,8 @@ import Lives from "../../components/quest/Lives";
 import RevealBtn from '../../components/quest/RevealBtn';
 import RemoveBtn from '../../components/quest/RemoveBtn';
 import SubmitBtn from '../../components/buttons/SubmitBtn';
+import RevealPrompt from '../../components/prompts/RevealPrompt';
+import RemovePrompt from '../../components/prompts/RemovePrompt';
 import FailedPrompt from '../../components/prompts/FailedPrompt';
 import './quest.css';
 
@@ -26,6 +28,9 @@ function Quest({ user, updateUser }) {
   const [showFailedPrompt, setShowFailedPrompt] = useState(false);
   const [isUpdatingXP, setIsUpdatingXP] = useState(false);
   
+  const [showRevealPrompt, setShowRevealPrompt] = useState(false);
+  const [showRemovePrompt, setShowRemovePrompt] = useState(false);
+
   // Tracks which letter button corresponds to each position in the answer
   const [letterMapping, setLetterMapping] = useState({});
 
@@ -302,6 +307,26 @@ function Quest({ user, updateUser }) {
     window.location.reload();
   };
 
+  // Handle remove and reveal prompts
+  const handleRevealPrompt = () => {
+    setShowRevealPrompt(true);
+  };
+
+  const handleRemovePrompt = () => {
+    setShowRemovePrompt(true);
+  };
+
+  const confirmReveal = () => {
+    setShowRevealPrompt(false);
+    handleReveal();
+  };
+
+  const confirmRemove = () => {
+    setShowRemovePrompt(false);
+    handleRemove();
+  };
+  
+
   // Render loading or error states
   if (error) return <div>Error: {error}</div>;
   if (!quest) return <div>Loading...</div>;
@@ -309,6 +334,10 @@ function Quest({ user, updateUser }) {
   return (
     <BGContainer difficulty={quest.difficulty}>
       <div className="quest-page">
+        
+        {showRevealPrompt && <RevealPrompt onConfirm={confirmReveal} onCancel={() => setShowRevealPrompt(false)} />}
+        {showRemovePrompt && <RemovePrompt onConfirm={confirmRemove} onCancel={() => setShowRemovePrompt(false)} />}
+
         {showFailedPrompt ? (
           <FailedPrompt onNext={handleNextAfterFailure} />
         ) : (
@@ -344,8 +373,8 @@ function Quest({ user, updateUser }) {
             </div>
 
             <div className="action-buttons">
-              <RevealBtn onRevealClick={handleReveal} />
-              <RemoveBtn onRemoveClick={handleRemove} />
+              <RevealBtn onRevealClick={handleRevealPrompt} />
+              <RemoveBtn onRemoveClick={handleRemovePrompt} />
               <SubmitBtn onSubmitClick={handleSubmit} disabled={!isComplete} />
             </div>
           </div>
