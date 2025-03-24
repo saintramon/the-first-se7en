@@ -52,9 +52,9 @@ function Instructions() {
       </div>
 
       <div className="arrows-container">
-        <button onClick={handlePrev}>Previous</button>
+        <button className="btn-prev" onClick={handlePrev}>Previous</button>
         <h2>Page {pageIndex + 1} of {pages.length}</h2>
-        <button onClick={handleNext}>Next</button>
+        <button className="btn-next" onClick={handleNext}>Next</button>
       </div>
     </div>
   );

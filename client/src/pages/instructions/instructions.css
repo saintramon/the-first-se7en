@@ -1,4 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
+@font-face {
+    font-family: Sniglet;
+    src: url('/fonts/Sniglet/Sniglet-ExtraBold.ttf');
+}
+
+@font-face {
+    font-family: Manrope;
+    src: url('/fonts/Manrope/Manrope-VariableFont_wght.ttf');
+  }
 
 .instructions-container {
     background: url("../../assets/bg-img/star-bg.png") no-repeat center center;
@@ -11,7 +19,7 @@
     justify-content: center;
     position: relative;
     overflow: hidden;
-    font-family: 'Manrope', sans-serif;
+    font-family: Manrope;
     color: #333;
     padding: 20px;
     box-sizing: border-box;
@@ -32,7 +40,7 @@
 }
 
 .main-title h1 {
-    font-weight: 300;
+    font-family: Sniglet;
     font-size: 3.5em;
     margin: 0;
     color: #000;
@@ -53,6 +61,7 @@
 
 .content-container p {
     color: #000;
+    font-family: Manrope;
     font-weight: 500;
     font-size: 1.5em;
     line-height: 1.8;
@@ -69,22 +78,20 @@
 }
 
 .arrows-container h2 {
-    font-size: 1.3em;
+    font-family: Manrope;
+    font-weight: bold;
+    font-size: 25px;
 }
 
-button {
+.btn-prev, .btn-next {
+    font-family: Sniglet;
     padding: 12px 24px;
-    font-size: 1.2em;;
+    font-size: 30px;
     cursor: pointer;
-    transition: background 0.3s ease;
     text-transform: uppercase;
 }
 
-button:hover {
-    background-color: #388E3C;
+.btn-prev:hover, .btn-next:hover {
+    background-color: #F9943B;
 }
 
-button:disabled {
-    background-color: #A5D6A7;
-    cursor: not-allowed;
-}
