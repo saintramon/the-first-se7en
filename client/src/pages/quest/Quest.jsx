@@ -256,7 +256,6 @@ function Quest({ user, updateUser }) {
         }
       });
     }
-
     // Check if the answer is correct
     if (quest.answer.toUpperCase() === word) {
       console.log("Correct answer provided!");
@@ -276,6 +275,13 @@ function Quest({ user, updateUser }) {
         window.location.reload();
       }
     } else {
+      // Incorrect answer - add shake and red effect
+      answerHolder.classList.add("shake", "wrong");
+
+      setTimeout(() => {
+          answerHolder.classList.remove("shake", "wrong");
+      }, 480);
+      
       // Incorrect answer - reduce attempts
       setAttemptsLeft(prev => {
         const newAttempts = prev - 1;
