@@ -4,7 +4,11 @@ const conn = require('../config/Database');
 /** Used for all queries within this class. Params can be a param list enclosed in a [] */
 function performQuery(query, params, callback) {
     conn.query(query, params, (err, results) => {
-        if (err) return callback(err, null);
+        if (err) {
+            console.error("Query Error:", err);  // Log query error
+            return callback(err, null);
+        }
+        console.log("Query Results:", results);  // Log query results
         return callback(null, results);
     });
 }
@@ -22,11 +26,22 @@ function performUpdate(query, params, callback) {
 function xpOperation(playerID, amount, callback) {
     var query = "UPDATE player SET xp_level =? WHERE player_id =?";
     performUpdate(query, [amount, playerID], (err, results) => {
-        if (err) callback(err, null);
-        else callback(null, results);
+        if (err) {
+            console.error("Error updating XP:", err);
+            return callback(err, null);
+        }
+
+        getPlayerXP(playerID, (err, updatedXPResults) => {
+            if (err) {
+                console.error("Error fetching updated XP:", err);
+                return callback(err, null);
+            }
+
+            console.log("Updated XP for player", playerID, ": " + updatedXPResults[0].xp_level);
+            callback(null, updatedXPResults[0].xp_level);  // Corrected return to pass the XP back
+        });
     });
 }
-
 /* Methods Pertaining to player table */
 /*signup*/
 async function signUp(username, password, xp = 10) {
@@ -57,14 +72,16 @@ function getPlayerXP(playerID, callback) {
 */
 function xpUP(playerID, questID, callback) {
     getQuestDifficulty(questID, (err, difficultyResults) => {
-        if (err || !difficultyResults || difficultyResults.length === 0) {
+        if (err) {
+            console.error("Error fetching quest difficulty:", err);
             return callback(new Error("Quest difficulty not found"), null);
         }
 
         const questDifficulty = difficultyResults[0].difficulty;
 
         getPlayerXP(playerID, (err, xpResults) => {
-            if (err || !xpResults || xpResults.length === 0) {
+            if (err) {
+                console.error("Error fetching player XP:", err);
                 return callback(new Error("Player XP not found"), null);
             }
 
@@ -74,33 +91,46 @@ function xpUP(playerID, questID, callback) {
                 case "easy": xp += 5; break;
                 case "medium": xp += 10; break;
                 case "hard": xp += 20; break;
+                default:
+                    console.log("Unknown quest difficulty:", questDifficulty);
+                    return callback(new Error("Unknown quest difficulty"), null);
             }
 
             console.log("NEW XP: " + xp);
 
-            xpOperation(playerID, xp, (err, updateResults) => {
-                if (err) return callback(err, null);
-                return callback(null, updateResults);
+            xpOperation(playerID, xp, (err, updatedXP) => {
+                if (err) {
+                    console.error("Error updating XP:", err);
+                    return callback(err, null);
+                }
+                return callback(null, updatedXP);  // Return the updated XP value
             });
         });
     });
 }
 
+
 /* When a person gets three questions wrong minus xp. Default value 5 as per SRS. */
-function xpDown(playerID, amount = 5) {
-    xp = getPlayerXP(playerID, (err, results) => {
-        if (err) return err;
-        else {
-            xp = results[0].xp_level - amount;
-            console.log("XP AMOUNT: ", xp)
-            var query = 'UPDATE player SET xp_level = ? WHERE player_id = ?';
-            return performUpdate(query, [xp, playerID], (err, results) => {
-                console.log(results)
-                if (err) return err;
-                else return results;
-            });
+function xpDown(playerID, amount = 5, callback) {
+    getPlayerXP(playerID, (err, results) => {
+        if (err) return callback(err, null);
+
+        let currentXP = results[0]?.xp_level || 0;  // Safely access xp_level
+        if (currentXP < amount) {
+            currentXP = 0;  // Prevent XP from going negative
+        } else {
+            currentXP -= amount;  // Subtract amount from current XP
         }
-    }); 
+
+        console.log("XP DOWN - New XP: ", currentXP);
+
+        // Update the player's XP
+        const query = 'UPDATE player SET xp_level = ? WHERE player_id = ?';
+        performUpdate(query, [currentXP, playerID], (err, results) => {
+            if (err) return callback(err, null);
+            callback(null, currentXP);  // Return the updated XP value
+        });
+    });
 }
 
 /* Methods Pertaining to quest table */

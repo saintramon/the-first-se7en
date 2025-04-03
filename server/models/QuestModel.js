@@ -40,23 +40,41 @@ function getQuestInformation(questID) {
 //     // TODO:
 
 // }
-
-function updateXP(questionID, playerID, decision) {
+function updateXP(questID, playerID, decision) {
     return new Promise((resolve, reject) => {
-        if (decision == 'up') { 
-            xpUP(playerID, questionID, (err, results) => {
+        // Convert to integers if they're strings
+        playerID = parseInt(playerID, 10);
+        questID = parseInt(questID, 10);
+        
+        console.log("Model updateXP called with:", {
+            questID, 
+            playerID, 
+            decision,
+            playerIDType: typeof playerID,
+            questIDType: typeof questID
+        });
+
+        if (decision === 'up') {
+            xpUP(playerID, questID, (err, updatedXP) => {
                 if (err) {
+                    console.error("Error in xpUP:", err);
                     return reject(err);
                 }
-                resolve(results);
+                console.log("XP increased successfully:", updatedXP);
+                resolve(updatedXP);
+            });
+        } else if (decision === 'down') {
+            // If you've fixed xpDown to use callback pattern:
+            xpDown(playerID, 5, (err, updatedXP) => {
+                if (err) {
+                    console.error("Error in xpDown:", err);
+                    return reject(err);
+                }
+                console.log("XP decreased successfully:", updatedXP);
+                resolve(updatedXP);
             });
         } else {
-            xpDown(playerID, questionID, (err, results) => {
-            if (err) {
-                return reject(err);
-            }
-            resolve(results);
-        });
+            reject(new Error('Invalid decision: ' + decision));
         }
     });
 }

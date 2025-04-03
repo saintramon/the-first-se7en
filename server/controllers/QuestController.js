@@ -91,32 +91,65 @@ const submitRevealLetter = (req, res) => {
     
    
 };
-const updateXP = (req, res) => {
-    console.log("UPDATE XP");
+// const updateXP = (req, res) => {
+//     console.log("UPDATE XP");
 
-    let playerID = req.body.playerID;
-    let questID = req.body.questID;
-    let decision = req.body.decision;
+//     let playerID = req.body.playerID;
+//     let questID = req.body.questID;
+//     let decision = req.body.decision;
 
-    model.updateXP(questID, playerID, decision)
-        .then((results) => {
-            console.log("XP Updated: ", results);
+//     model.updateXP(questID, playerID, decision)
+//         .then((updatedXP) => {
+//             console.log("XP Updated: ", results);
             
-            // Extract the updated XP value from results
-            const updatedXP = results.newXP || results.xp || results;
+//             // Extract the updated XP value from results
+//             // const updatedXP = results.newXP || results.xp || results;
             
-            // Return the updated XP value to the frontend
-            res.status(200).json({ 
-                message: "XP Updated",
-                updatedXP: updatedXP
-            });
-        })
-        .catch((error) => {
-            console.error("Error updating XP: ", error);
-            res.status(500).json({ error: "Internal Server Error" });
-        }
-    );
-}
+//             // Return the updated XP value to the frontend
+//             res.status(200).json({ 
+//                 message: "XP Updated",
+//                 updatedXP: updatedXP
+//             });
+//         })
+//         .catch((error) => {
+//             console.error("Error updating XP: ", error);
+//             res.status(500).json({ error: "Internal Server Error" });
+//         }
+//     );
+// }
+const updateXP = async (req, res) => {
+    console.log("UPDATE XP - Request body:", req.body);
+
+    let { playerID, questID, decision } = req.body;
+    
+    // Validate input parameters
+    if (!playerID || !questID || !decision) {
+        return res.status(400).json({ 
+            error: "Missing required parameters",
+            receivedParams: { playerID, questID, decision }
+        });
+    }
+
+    try {
+        console.log(`Attempting to update XP: Player ID ${playerID}, Quest ID ${questID}, Decision: ${decision}`);
+        const updatedXP = await model.updateXP(questID, playerID, decision);
+        console.log("XP Updated successfully:", updatedXP);
+
+        res.status(200).json({
+            message: "XP Updated",
+            updatedXP: updatedXP
+        });
+    } catch (error) {
+        console.error("Error updating XP:", error);
+        // Send more detailed error information
+        res.status(500).json({ 
+            error: "Internal Server Error", 
+            message: error.message,
+            stack: error.stack
+        });
+    }
+};
+
 
 const submitRemoveLetter = (req, res) => {
     console.log("removing");
